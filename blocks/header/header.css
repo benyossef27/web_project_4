@@ -1,0 +1,9 @@
+.header{
+    margin: 0 200px 40px;
+    padding-top: 45px;
+    width: 880px;
+    border-bottom: 1px #545454 solid;
+    background-color: black ;
+    display: flex;
+    justify-content: flex-start;
+}
