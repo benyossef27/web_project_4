@@ -1,5 +1,5 @@
 .user__add-button{
-    margin: 0 0 0 165px;
+    margin: 0;
     justify-self: flex-end;
     align-self: center;
     width: 150px;
@@ -12,4 +12,10 @@
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
+    transition: all .2s ease;
+    cursor: pointer;
 }
+
+.user__add-button:hover {
+    opacity: .6;
+  }

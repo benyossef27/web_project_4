@@ -5,7 +5,6 @@
     height: 24px;
     width: 24px;
     padding: 7px;
-    margin-left: 18px;
     margin-top: 36px;
     border-radius: 2px;
     transition: all .2s ease;
@@ -18,23 +17,4 @@
   
   .user__popup-button:hover {
     opacity: .6;
-  }
-  
-  @media (max-width: 768px) {
-    .user__popup-button {
-      position: absolute;
-      right: -34px;
-      bottom: 16px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .user__popup-button{
-      right: -24px;
-      bottom: 13px;
-      height: 18px;
-      width: 18px;
-      padding: 5px;
-      background-size: 50%;
-    }
   }
