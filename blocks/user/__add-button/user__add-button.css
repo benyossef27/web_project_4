@@ -1,0 +1,15 @@
+.user__add-button{
+    margin: 0 0 0 165px;
+    justify-self: flex-end;
+    align-self: center;
+    width: 150px;
+    height: 50px;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-color: transparent;
+    background-image: url(../../../images/user/user__add-button.svg);
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
