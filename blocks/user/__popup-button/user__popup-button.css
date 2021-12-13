@@ -1,0 +1,9 @@
+.user__popup-button{
+    width: 24px;
+    height: 24px;
+    margin: 36px 18px;
+    background-color: #E5E5E5;
+    opacity: 0.3;
+    background-image: url(/images/user/user__popup-button.svg);
+
+}
