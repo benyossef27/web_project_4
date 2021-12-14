@@ -1,6 +1,6 @@
-.card__heart-button{
+.card__like-button{
     padding: 10px 10px;
-    background-image:url(../../../images/card/card__heart-butten.svg);
+    background-image:url(../../../images/card/likebefore.svg);
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
@@ -9,6 +9,6 @@
     cursor: pointer;
 }
 
-.card__heart-button:hover {
+.card__like-button:hover {
     opacity: .6;
   }
