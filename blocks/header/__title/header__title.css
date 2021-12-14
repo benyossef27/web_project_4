@@ -1,7 +1,18 @@
 .header__title{
-    height: 33px;
-    width: 173px;
-    margin-bottom: 41px;
+    max-height: 33px;
+    max-width: 173px;
+    margin-bottom: 40px;
     background-color: black;
     color: white;
+}
+
+
+@media screen and (max-width:900px) {
+    .header__title{
+        padding-left: 27px;
+        max-width: 126px;
+        max-height: 24px;
+        margin-bottom: 32px;
+    }
+    
 }

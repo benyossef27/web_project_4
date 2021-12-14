@@ -4,5 +4,6 @@
     font-size: 18px;
     line-height: 22px;
     padding: 60px 0;
-    margin: 0;
+    margin: 0 auto;
+    max-width:888px;
 }

@@ -17,3 +17,9 @@
   .profile__popup-button:hover {
     opacity: .6;
   }
+
+  @media screen and (max-width: 888px){
+    .profile__popup-button{
+        justify-self: center;
+    }
+}
