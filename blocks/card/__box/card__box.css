@@ -1,4 +1,8 @@
 .card__box{
-   display: flex;
-   flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 15px 0 21px;
+
+    
 }
