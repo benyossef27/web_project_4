@@ -1,0 +1,4 @@
+.card__box{
+   display: flex;
+   flex-wrap: nowrap;
+}

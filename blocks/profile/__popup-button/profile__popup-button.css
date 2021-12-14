@@ -1,7 +1,5 @@
-.user__popup-button{
-    box-sizing: border-box;
+.profile__popup-button{
     border: 1px solid #FFFFFF;
-    background-color: transparent;
     height: 24px;
     width: 24px;
     padding: 7px;
@@ -9,12 +7,13 @@
     border-radius: 2px;
     transition: all .2s ease;
     cursor: pointer;
-    background-image: url(../../../images/user/user__popup-button.svg);
+    background-image: url(../../../images/profile/profile__popup-button.svg);
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: transparent;
   }
   
-  .user__popup-button:hover {
+  .profile__popup-button:hover {
     opacity: .6;
   }

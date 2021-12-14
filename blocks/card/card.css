@@ -1,0 +1,7 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    font-family: Inter;
+    background-color: white;
+    border-radius: 11px;
+}
