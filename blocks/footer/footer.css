@@ -1,6 +1,8 @@
 .footer{
     display: flex;
     justify-content: flex-start;
-    margin: 0;
+    align-items: flex-start;
     font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+    max-width: 888px;
+    margin: auto;
 }

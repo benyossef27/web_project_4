@@ -10,3 +10,9 @@
         margin: auto;
     }
 }
+
+@media screen and (max-width: 610px){
+    .profile__avatar{
+      grid-area: ava;
+    }
+  }

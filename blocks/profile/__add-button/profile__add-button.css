@@ -13,15 +13,20 @@
     background-repeat: no-repeat;
     transition: all .2s ease;
     cursor: pointer;
-    
 }
 
 .profile__add-button:hover {
     opacity: .6;
-  }
+}
 
   @media screen and (max-width: 888px){
     .profile__add-button{
         justify-self: center;
     }
 }
+@media screen and (max-width: 610px){
+    .profile__add-button{
+      grid-area: add;
+      width: 282px;
+    }
+  }

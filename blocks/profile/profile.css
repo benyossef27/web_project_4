@@ -5,4 +5,27 @@
     display: grid;
     grid-template-columns: 1fr 2.5fr 1fr 1fr;
     justify-content: center;
+    grid-template-areas:"ava det pop add" ;
 }
+
+@media screen and (max-width: 888px) {
+    .profile{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    max-width: calc((282*2)+17);
+    grid-template-areas:
+    "ava det"
+    "pop add" ;
+}}
+
+@media screen and (max-width: 610px) {
+    .profile{
+    grid-template-columns: 18px 196px 18px;
+    grid-template-rows: auto;
+    column-gap: 10px;
+    max-width: 282px;
+    grid-template-areas:
+    ".  ava    ."
+    ".  det    pop"
+    "add  add    add";
+}}

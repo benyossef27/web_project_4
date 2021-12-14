@@ -23,3 +23,10 @@
         justify-self: center;
     }
 }
+
+@media screen and (max-width: 610px){
+  .profile__popup-button{
+    grid-area: pop;
+    margin-top: 26.5px;
+  }
+}
