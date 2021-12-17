@@ -1,6 +1,6 @@
 /*choosing the popup-window and the opening popup-button*/
-let popup = document.querySelector("#popup");
-let popupButton = document.querySelector("#popup-button");
+let popup = document.querySelector(".popup");
+let popupButton = document.querySelector(".profile__popup-button");
 
 //opening the popup window
 function display() {

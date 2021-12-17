@@ -1,4 +1,4 @@
-.popup__about{
+.popup__job{
     display: block;
     margin: 0 auto;
     width: 358px;
@@ -14,7 +14,7 @@
 }
 
 @media screen and (max-width:610px) {
-    .popup__about{
+    .popup__job{
         width: 238px;
     }
 }

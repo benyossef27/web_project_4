@@ -18,7 +18,7 @@
                 <img class="profile__avatar" src="./images/profile/profile__avatar.svg" alt="your face">
                 <div class="profile__details">
                     <h2 class="profile__name">Jacques Cousteau</h2>
-                    <p class="profile__description">Explorer</p>
+                    <p class="profile__job">Explorer</p>
                 </div>
                 <button class="profile__popup-button" onclick="display()" id="popup-button"></button>
                 <button class="profile__add-button"></button>
@@ -27,49 +27,50 @@
                 <span class="popup__container">
                     <button class="popup__close" id="popup__close" onclick="close()"></button>
                     <h2 class="popup__heading">Edit Profile</h2>
-                    <div class="popup__input">
+                    <form class="popup__input">
                         <input type="text" placeholder="Name" class="popup__name">
-                        <input type="text" placeholder="About me"class="popup__about">
-                    </div>
-                    <button class="popup__save">Save</button>
+                        <input type="text" placeholder="About me"class="popup__job">
+                        <button type="button" onclick="handleProfileForSubmit(evt)" class="popup__save" value="submit">Save</button>
+                    </form>
+                   
                 </span></div>
         <section class="cards">
             <div class="card">
                 <img class="card__image" src="./images/card/kirill-pershin-0-unsplash.svg" alt="A place in the U.S.">
                 <div class="card__box">
                     <h2 class="card__name">Yosemite Vally</h2>
-                    <button  class="card__like-button"></button>
+                    <button aria-label="like" class="card__like-button"></button>
                 </div>
             </div>
             <div class="card">
                 <img class="card__image" src="./images/card/kirill-pershin-1088404-unsplash.svg" alt="A place in the U.S.">
                 <div class="card__box">
                     <h2 class="card__name">Lake Louise</h2>
-                    <button  class="card__like-button"></button></div>
+                    <button aria-label="like" class="card__like-button"></button></div>
                 </div>
             <div class="card">
                 <img class="card__image" src="./images/card/kirill-pershin-1404681-unsplash.svg" alt="A place in the U.S.">
                 <div class="card__box">
                     <h2 class="card__name">Bald Mountains</h2>
-                    <button  class="card__like-button"></button></div>
+                    <button aria-label="like" class="card__like-button"></button></div>
                 </div>
             <div class="card">
                 <img class="card__image" src="./images/card/kirill-pershin-1409681-unsplash.svg" alt="A place in the U.S.">
                 <div class="card__box">
                     <h2 class="card__name">Latemar</h2>
-                    <button  class="card__like-button"></button></div>
+                    <button aria-label="like" class="card__like-button"></button></div>
                 </div>
             <div class="card">
                 <img class="card__image" src="./images/card/kirill-pershin-1556355-unsplash.svg" alt="A place in the U.S.">
                 <div class="card__box">
                 <h2 class="card__name">Lago di Braies</h2>
-                <button  class="card__like-button"></button></div>
+                <button aria-label="like" class="card__like-button"></button></div>
             </div>
             <div class="card">
                 <img class="card__image" src="./images/card/kirill-pershin-1556855-unsplash.svg" alt="A place in the U.S.">
                 <div class="card__box">
                 <h2 class="card__name">Vanoise National Park</h2>
-                <button  class="card__like-button"></button></div>
+                <button aria-label="like" class="card__like-button"></button></div>
             </div>
         </section>
         </main>
@@ -77,7 +78,7 @@
           <p class="footer__copywright">&copy; 2021 benyo</p>
       </footer>
     </div>
-     <script src="./blocks/popup/popup.js">
-     </script> 
+     <script src="./blocks/popup/popup.js"></script> 
+     <script src="./blocks/profile/profile.js"></script>
     </body>
 </html>
