@@ -1,7 +1,7 @@
 .popup__container{
-    position: fixed;
+    position:fixed;
     top: 195px;
-    right: 33.2%;
+    align-self: center;
     width: 430px;
     height: 330px;
     background-color: white;
@@ -10,21 +10,10 @@
     padding: 0;
 }
 
-@media screen and (max-width:888px) {
-    .popup__container{
-        left: 15%;
-    }
-}
 
 @media screen and (max-width:610px) {
     .popup__container{
         width: 282px;
-        left: 25%;
     }
 }
 
-@media screen and (max-width:550px) {
-    .popup__container{
-        left: 5%;
-    }
-}
