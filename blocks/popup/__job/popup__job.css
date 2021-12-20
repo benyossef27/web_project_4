@@ -13,7 +13,7 @@
     margin-top: 54px;
 }
 
-@media screen and (max-width:610px) {
+@media screen and (max-width:610px){
     .popup__job{
         width: 238px;
     }

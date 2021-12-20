@@ -2,10 +2,9 @@
     border-radius: 55%;
     margin: 0;
     max-height: 120px;
-    
 }
 
-@media screen and (max-width: 888px) {
+@media screen and (max-width: 888px){
     .profile__avatar{
         margin: auto;
     }
@@ -15,4 +14,4 @@
     .profile__avatar{
       grid-area: ava;
     }
-  }
+}
