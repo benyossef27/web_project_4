@@ -1,7 +1,7 @@
 .card{
     display: flex;
     flex-direction: column;
-    font-family: Inter;
+    font-family:Inter, Verdana, Geneva, Tahoma, sans-serif;
     background-color: white;
     border-radius: 11px;
 }

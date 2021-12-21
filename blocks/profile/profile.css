@@ -1,11 +1,12 @@
 .profile{
     font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
-    margin: 0 auto 50px;
-    max-width: 880px;
+    margin: 0  auto 50px;
+    max-width: 902.5px;
     display: grid;
-    grid-template-columns: 1fr 2.5fr 1fr 1fr;
+    grid-template-columns: 120px 421px 24px 1fr;
     justify-content: center;
     grid-template-areas:"ava det pop add";
+    justify-content: center;
 }
 
 @media screen and (max-width: 888px){
