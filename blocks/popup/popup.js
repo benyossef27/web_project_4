@@ -16,24 +16,26 @@ const profileFormJobInput = profileForm.elements.job;
 
 //opening popup window
 function display() {
-    popup.classList.remove("popup");
     popup.classList.add("popup_open");
-}
+    profileFormNameInput.value = profileName.textContent;
+    profileFormJobInput.value = profileJob.textContent;
+}   
 //listener open button
 popupButton.addEventListener("click", display);
 
 //closing popup window without submit
 function close() {
     popup.classList.remove("popup_open");
-    popup.classList.add("popup");
 }
 //listener close button
 popupClose.addEventListener("click", close);
 
 //submitting & closing form
-profileForm.addEventListener("submit", function(event){
+function submit(event) {
     profileName.textContent = profileFormNameInput.value;
     profileJob.textContent = profileFormJobInput.value;
     event.preventDefault();
     close();
-});
+}
+//listner submit butten
+profileForm.addEventListener("submit", submit);

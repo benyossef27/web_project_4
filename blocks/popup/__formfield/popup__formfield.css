@@ -1,20 +1,18 @@
-.popup__name{
+.popup__formfield{
     display: block;
     margin: 0 auto;
     width: 358px;
     border: none;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid rgba(0,0,0,.2);
     width: 358px;
-    opacity: 0.2;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
-    margin-top: 54px;
 }
 
 @media screen and (max-width:610px){
-    .popup__name{
+    .popup__formfield{
         width: 238px;
     }
 }

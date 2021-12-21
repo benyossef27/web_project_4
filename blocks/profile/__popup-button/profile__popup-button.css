@@ -27,6 +27,8 @@
 @media screen and (max-width: 610px){
   .profile__popup-button{
     grid-area: pop;
-    margin-top: 26.5px;
+    margin-top: 30px;
+    height: 18px;
+  width: 18px;
   }
 }

@@ -1,4 +1,5 @@
 .card__name{
+    margin: 25px auto 31px;
     max-width: 222px;
     white-space: nowrap;
     overflow: hidden;
@@ -8,4 +9,8 @@
     font-size: 24px;
     line-height: 29px;
     color: #000000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 391px; 
 }

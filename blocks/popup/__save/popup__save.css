@@ -11,6 +11,7 @@
     height: 50.15px;
     background: #000000;
     border-radius: 2px;
+    border: none;
     transition: ease-in-out, 0.5s;
     cursor: pointer;
 }
@@ -21,6 +22,7 @@
         height: 46px;
         font-size: 14px;
         line-height: 17px;
+        margin-top: 46px;
     }
 }
 
