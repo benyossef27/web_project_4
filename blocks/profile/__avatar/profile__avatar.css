@@ -11,7 +11,7 @@
     }
 }
 
-@media screen and (max-width: 610px){
+@media screen and (max-width: 675px){
     .profile__avatar{
       grid-area: ava;
     }

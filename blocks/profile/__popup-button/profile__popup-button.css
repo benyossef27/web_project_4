@@ -24,11 +24,11 @@
   }
 }
 
-@media screen and (max-width: 610px){
+@media screen and (max-width: 675px){
   .profile__popup-button{
     grid-area: pop;
     margin-top: 30px;
     height: 18px;
-  width: 18px;
+    width: 18px;
   }
 }

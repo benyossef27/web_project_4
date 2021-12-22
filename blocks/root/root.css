@@ -1,6 +1,6 @@
 .root{
     background-color: black;
-    margin:auto;
+    margin:0 ;
     padding: 0;
     font-family: Inter, Arial, Helvetica, sans-serif;
     -moz-osx-font-smoothing: grayscale;
@@ -9,5 +9,4 @@
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
-    z-index: 0;
 }

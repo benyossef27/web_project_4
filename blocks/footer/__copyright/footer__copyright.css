@@ -1,4 +1,4 @@
-.footer__copywright{
+.footer__copyright{
     color: #545454;
     font-weight: normal;
     font-size: 18px;
@@ -8,13 +8,13 @@
 }
 
 @media screen and (max-width:910px){
-    .footer__copywright{
+    .footer__copyright{
         padding-left: 19px;
     }
 }
 
 @media screen and (max-width:320px){
-    .footer__copywright{
+    .footer__copyright{
         font-size: 14px;
         line-height: 17px;
-}
+}   }

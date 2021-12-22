@@ -5,10 +5,12 @@
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
-    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-@media screen and (max-width: 610px){
+@media screen and (max-width: 675px){
     .profile__job{
         text-align: center;
         font-size: 14px;
