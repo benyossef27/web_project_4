@@ -1,8 +1,7 @@
 //popup open & close realted
-const popup = document.querySelector(".popup");
+const popup = document.querySelector(".popup_type_profile");
 const popupButton = document.querySelector(".profile__popup-button");
-const popupOpen = document.querySelector(".popup__open");
-const popupClose = document.querySelector(".popup__close");
+const popupClose = document.querySelector(".popup__close_type_profile");
 
 //text content submition related
 const profileName = document.querySelector(".profile__name");
@@ -39,3 +38,4 @@ function submit(event) {
 }
 //listner submit butten
 profileForm.addEventListener("submit", submit);
+

@@ -25,64 +25,16 @@
                 <button class="profile__add-button" aria-label="addbutton" type="button"></button>
             </section>
             <section class="cards">
-                <div class="card">
-                    <img class="card__image" src="./images/card/kirill-pershin-0-unsplash.svg"
-                        alt="A place in the U.S.">
-                    <div class="card__box">
-                        <h2 class="card__name">Yosemite Vally</h2>
-                        <button aria-label="like" class="card__like-button" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__image" src="./images/card/kirill-pershin-1088404-unsplash.svg"
-                        alt="A place in the U.S.">
-                    <div class="card__box">
-                        <h2 class="card__name">Lake Louise</h2>
-                        <button aria-label="like" class="card__like-button" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__image" src="./images/card/kirill-pershin-1404681-unsplash.svg"
-                        alt="A place in the U.S.">
-                    <div class="card__box">
-                        <h2 class="card__name">Bald Mountains</h2>
-                        <button aria-label="like" class="card__like-button" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__image" src="./images/card/kirill-pershin-1409681-unsplash.svg"
-                        alt="A place in the U.S.">
-                    <div class="card__box">
-                        <h2 class="card__name">Latemar</h2>
-                        <button aria-label="like" class="card__like-button" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__image" src="./images/card/kirill-pershin-1556355-unsplash.svg"
-                        alt="A place in the U.S.">
-                    <div class="card__box">
-                        <h2 class="card__name">Lago di Braies</h2>
-                        <button aria-label="like" class="card__like-button" type="button"></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card__image" src="./images/card/kirill-pershin-1556855-unsplash.svg"
-                        alt="A place in the U.S.">
-                    <div class="card__box">
-                        <h2 class="card__name">Vanoise National Park</h2>
-                        <button aria-label="like" class="card__like-button" type="button"></button>
-                    </div>
-                </div>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">&copy; 2021 benyo</p>
         </footer>
-        <div class="popup">
+        <div class="popup popup_type_profile">
             <div class="popup__container">
-                <button class="popup__close" aria-label="popuoclose" type="button"></button>
+                <button class="popup__close popup__close_type_profile" aria-label="popuoclose" type="button"></button>
                 <h2 class="popup__heading">Edit Profile</h2>
-                <form class="popup__input" name="profile">
+                <form class="popup__input" popup__input_type_profile name="profile">
                     <input id="name" name="name" type="text" placeholder="Name"
                         class="popup__formfield popup__formfield_field_name" minlength="4" maxlength="18" required>
                     <input id="job" name="job" type="text" placeholder="About me"
@@ -92,8 +44,33 @@
 
             </div>
         </div>
+        <div class="popup popup_type_place">
+            <div class="popup__container">
+                <button class="popup__close popup__close_type_place" aria-label="popuoclose" type="button"></button>
+                <h2 class="popup__heading popup__heading_type_place">Add place</h2>
+                <form class="popup__input popup__input_type_place" name="place">
+                    <input id="placeheading" name="placeheading" type="text" placeholder="Title"
+                        class="popup__formfield popup__formfield_field_heading" minlength="4" maxlength="18" required>
+                    <input id="img" name="img" type="url" placeholder="Image Url"
+                        class="popup__formfield popup__formfield__field_img" required>
+                    <button type="submit" class="popup__save popup__save_type_place">Create</button>
+                </form>
+
+            </div>
+        </div>
     </div>
     <script src="./blocks/popup/popup.js" defer></script>
+    <script src="./blocks/card/card.js" defer></script>
+    <template class="card-template">
+    <div class="card">
+        
+        <img class="card__image"> <button class="card__delete-button" type="button" aria-label="delete"></button>
+        <div class="card__box">
+            <h2 class="card__name"></h2>
+            <button aria-label="like" class="card__like-button" type="button"></button>
+        </div>
+    </div>
+</template>
 </body>
 
 </html>
