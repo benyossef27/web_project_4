@@ -37,14 +37,13 @@ const createCard = document.querySelector(".popup__save_type_place")
 
 //form inputs
 const cardTitleInput = addPlace.querySelector(".popup__formfield_field_heading")
-const cardImageInput = addPlace.querySelector(".popup__formfield__field_img")
+const cardImageInput = addPlace.querySelector(".popup__formfield_field_img")
 
 //form 
 cardForm = addPlace.querySelector(".popup__input_type_place")
 //form submit
 cardForm.addEventListener("submit", (evt) => {
     evt.preventDefault()
-    console.log(cardTitleInput.Value, cardImageInput.Value)
     generateCard({name: cardTitleInput.value, link:cardImageInput.value})
     closeAddPlace()
 
@@ -82,7 +81,7 @@ cardTitle.textContent = cardData.name;
 cardImage.src = cardData.link;
 
 //open preview picture
-cardImage.addEventListener("click", ()=>{
+cardImage.addEventListener("click", () => {
  imagePreview.classList.add("popup_open")
  imageDisplayed.src = cardData.link;
  imageDisplayedHeading.textContent = cardData.name;
