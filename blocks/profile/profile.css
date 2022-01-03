@@ -16,8 +16,7 @@
         grid-template-areas:
         "ava det pop"
         ". add  . ";
-    }
-}
+}}
 
 @media screen and (max-width: 675px){
     .profile{
@@ -30,5 +29,4 @@
         ".  ava    ."
         ".  det    pop"
         "add  add    add";
-    }
-}
+}}

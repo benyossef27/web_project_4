@@ -4,8 +4,3 @@
     height: 282px;
     cursor: pointer;
 }
-
-.card__image:hover{
-    transform: scale(1.01);
-    transition: ease-in-out 0.3s;
-}
