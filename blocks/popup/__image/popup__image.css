@@ -5,9 +5,9 @@
     height: 540px;
 }
 
-@media screen and (max-width: 610px){
+@media screen and (max-width: 800px){
     .popup__image{
-    max-width: 240px;
-    height: 299px;
+        max-width: 240px;
+        height: 299px;
     }
 }
