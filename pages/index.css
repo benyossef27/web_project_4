@@ -12,12 +12,15 @@
 @import url(../blocks/profile/__job/profile__job.css);
 @import url(../blocks/profile/__popup-button/profile__popup-button.css);
 @import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__container/_type_preview/popup__container_type_preview.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_open/popup_open.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
+@import url(../blocks/popup/__heading/_type_preview/popup__heading_type_preview.css);
 @import url(../blocks/popup/__formfield/popup__formfield.css);
 @import url(../blocks/popup/__save/popup__save.css);
+@import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);

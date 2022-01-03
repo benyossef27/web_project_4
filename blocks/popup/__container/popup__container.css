@@ -1,6 +1,6 @@
 .popup__container{
     position: relative;
-    width: 430px;
+    max-width: 816pxpx;
     background-color: white;
     border-radius: 10px;
     font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
@@ -9,7 +9,7 @@
 
 @media screen and (max-width:610px){
     .popup__container{
-        width: 282px;
+        max-width: 282px;
     }
 }
 
