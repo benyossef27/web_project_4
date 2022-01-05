@@ -2,6 +2,9 @@
 const popup = document.querySelector(".popup_type_profile");
 const popupButton = document.querySelector(".profile__popup-button");
 const popupClose = document.querySelector(".popup__close_type_profile");
+const addPlace = document.querySelector(".popup_type_place");
+const addPlaceButton = document.querySelector(".profile__add-button");
+const closeAddPlaceButten = document.querySelector(".popup__close_type_place")
 
 //text content submition related
 const profileName = document.querySelector(".profile__name");
@@ -12,6 +15,15 @@ const submitButten = document.querySelector(".popup__save");
 const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormJobInput = profileForm.elements.job;
+const cardTitleInput = addPlace.querySelector(".popup__formfield_field_heading")
+const cardImageInput = addPlace.querySelector(".popup__formfield_field_img")
+cardForm = addPlace.querySelector(".popup__input_type_place")
+
+
+//cards
+const TemplateCard = document.querySelector(".card-template").content.querySelector(".card")
+const cardContainer = document.querySelector(".cards");
+const createCard = document.querySelector(".popup__save_type_place")
 
 //opening popup window
 function display() {
@@ -66,22 +78,6 @@ const initialCards = [
     }
 ];
 
-//variables for open/close form
-const addPlace = document.querySelector(".popup_type_place");
-const addPlaceButton = document.querySelector(".profile__add-button");
-const closeAddPlaceButten = document.querySelector(".popup__close_type_place")
-
-//variables for cards
-const TemplateCard = document.querySelector(".card-template").content.querySelector(".card")
-const cardContainer = document.querySelector(".cards");
-const createCard = document.querySelector(".popup__save_type_place")
-
-//form inputs
-const cardTitleInput = addPlace.querySelector(".popup__formfield_field_heading")
-const cardImageInput = addPlace.querySelector(".popup__formfield_field_img")
-
-//form 
-cardForm = addPlace.querySelector(".popup__input_type_place")
 //form submit
 cardForm.addEventListener("submit", (evt) => {
     evt.preventDefault()
@@ -144,7 +140,7 @@ cardDelete.addEventListener("click", ()=> {
 });
 
 //cards go in cards container
-cardContainer.append(placeCard);
+cardContainer.prepend(placeCard);
 };
 
 //use initial cards
