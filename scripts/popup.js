@@ -17,7 +17,7 @@ const profileFormNameInput = profileForm.elements.name;
 const profileFormJobInput = profileForm.elements.job;
 const cardTitleInput = addPlace.querySelector(".popup__formfield_field_heading")
 const cardImageInput = addPlace.querySelector(".popup__formfield_field_img")
-cardForm = addPlace.querySelector(".popup__input_type_place")
+const cardForm = addPlace.querySelector(".popup__input_type_place")
 
 
 //cards
@@ -86,6 +86,7 @@ const initialCards = [
 cardForm.addEventListener("submit", (evt) => {
     evt.preventDefault()
     cardContainer.prepend(createCardElement({name: cardTitleInput.value, link:cardImageInput.value}))
+    cardForm.reset()
     closeAddPlace()
 
 })
@@ -99,7 +100,7 @@ addPlaceButton.addEventListener("click", displayAddPlace);
 //function to close card form
 function closeAddPlace() {
     addPlace.classList.remove("popup_open")
-    cardForm.reset()}
+    }
 
 //listner for function
 closeAddPlacebutton.addEventListener("click", closeAddPlace);
@@ -123,6 +124,7 @@ cardImage.alt = "sorry, coulden't load picture"
 cardImage.addEventListener("click", () => {
  imagePreview.classList.add("popup_open")
  imageDisplayed.src = card.link;
+ imageDisplayed.alt = "sorry, coulden't load picture"
  imageDisplayedHeading.textContent = card.name;
 });
 
