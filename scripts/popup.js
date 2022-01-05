@@ -4,12 +4,12 @@ const popupButton = document.querySelector(".profile__popup-button");
 const popupClose = document.querySelector(".popup__close_type_profile");
 const addPlace = document.querySelector(".popup_type_place");
 const addPlaceButton = document.querySelector(".profile__add-button");
-const closeAddPlaceButten = document.querySelector(".popup__close_type_place")
+const closeAddPlacebutton = document.querySelector(".popup__close_type_place")
 
 //text content submition related
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
-const submitButten = document.querySelector(".popup__save");
+const submitbutton = document.querySelector(".popup__save");
 
 //forms 
 const profileForm = document.forms.profile;
@@ -52,7 +52,7 @@ function submit(event) {
     event.preventDefault();
     close();
 }
-//listner submit butten
+//listner submit button
 profileForm.addEventListener("submit", submit);
 
 const initialCards = [
@@ -85,7 +85,7 @@ const initialCards = [
 //form submit
 cardForm.addEventListener("submit", (evt) => {
     evt.preventDefault()
-    createCardElement({name: cardTitleInput.value, link:cardImageInput.value})
+    cardContainer.prepend(createCardElement({name: cardTitleInput.value, link:cardImageInput.value}))
     closeAddPlace()
 
 })
@@ -102,27 +102,28 @@ function closeAddPlace() {
     cardForm.reset()}
 
 //listner for function
-closeAddPlaceButten.addEventListener("click", closeAddPlace);
+closeAddPlacebutton.addEventListener("click", closeAddPlace);
 
 //generating cards from form
-function createCardElement(cardData){
+function createCardElement(card){
   
-  const TemplateCard = document.querySelector(".card-template").content.querySelector(".card")
-  const cardElement = TemplateCard.cloneNode(true); 
+  const cardTemplate = document.querySelector(".card-template").content.querySelector(".card")
+  const cardElement = cardTemplate.cloneNode(true); 
 
 const cardTitle = cardElement.querySelector(".card__name");
 const cardImage = cardElement.querySelector(".card__image");
 const cardDelete = cardElement.querySelector(".card__delete-button");
 const cardLike = cardElement.querySelector(".card__like-button");
 
-cardTitle.textContent = cardData.name;
-cardImage.src = cardData.link;
+cardTitle.textContent = card.name;
+cardImage.src = card.link;
+cardImage.alt = "sorry, coulden't load picture"
 
 //open preview picture
 cardImage.addEventListener("click", () => {
  imagePreview.classList.add("popup_open")
- imageDisplayed.src = cardData.link;
- imageDisplayedHeading.textContent = cardData.name;
+ imageDisplayed.src = card.link;
+ imageDisplayedHeading.textContent = card.name;
 });
 
 //close preview picture
@@ -138,12 +139,14 @@ cardLike.addEventListener("click", ()=> {
 //deleting cards
 cardDelete.addEventListener("click", ()=> {
   cardElement.remove();
-}); 
-cardContainer.prepend(cardElement);
+});
 return cardElement
 //cards go in cards container
 };
 
-
+//send cards to container
+function randerCard(card, warpper) {
+  warpper.append(createCardElement(card))
+}
 //use initial cards
-initialCards.forEach(createCardElement);
+initialCards.forEach(card => randerCard(card, cardContainer));
