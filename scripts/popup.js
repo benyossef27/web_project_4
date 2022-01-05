@@ -21,9 +21,13 @@ cardForm = addPlace.querySelector(".popup__input_type_place")
 
 
 //cards
-const TemplateCard = document.querySelector(".card-template").content.querySelector(".card")
 const cardContainer = document.querySelector(".cards");
 const createCard = document.querySelector(".popup__save_type_place")
+const imagePreview = document.querySelector(".popup_type_preview")
+const previewClose = document.querySelector(".popup__close_type_preview")
+const imageDisplayed = document.querySelector(".popup__image")
+const imageDisplayedHeading = document.querySelector(".popup__heading_type_preview")
+
 
 //opening popup window
 function display() {
@@ -81,7 +85,7 @@ const initialCards = [
 //form submit
 cardForm.addEventListener("submit", (evt) => {
     evt.preventDefault()
-    generateCard({name: cardTitleInput.value, link:cardImageInput.value})
+    createCardElement({name: cardTitleInput.value, link:cardImageInput.value})
     closeAddPlace()
 
 })
@@ -101,18 +105,15 @@ function closeAddPlace() {
 closeAddPlaceButten.addEventListener("click", closeAddPlace);
 
 //generating cards from form
-function generateCard(cardData){
+function createCardElement(cardData){
+  
+  const TemplateCard = document.querySelector(".card-template").content.querySelector(".card")
+  const cardElement = TemplateCard.cloneNode(true); 
 
-  const placeCard = TemplateCard.cloneNode(true); 
-
-const cardTitle = placeCard.querySelector(".card__name");
-const cardImage = placeCard.querySelector(".card__image");
-const cardDelete = placeCard.querySelector(".card__delete-button");
-const cardLike = placeCard.querySelector(".card__like-button");
-const imagePreview = document.querySelector(".popup_type_preview")
-const previewClose = document.querySelector(".popup__close_type_preview")
-const imageDisplayed = document.querySelector(".popup__image")
-const imageDisplayedHeading = document.querySelector(".popup__heading_type_preview")
+const cardTitle = cardElement.querySelector(".card__name");
+const cardImage = cardElement.querySelector(".card__image");
+const cardDelete = cardElement.querySelector(".card__delete-button");
+const cardLike = cardElement.querySelector(".card__like-button");
 
 cardTitle.textContent = cardData.name;
 cardImage.src = cardData.link;
@@ -136,12 +137,13 @@ cardLike.addEventListener("click", ()=> {
 
 //deleting cards
 cardDelete.addEventListener("click", ()=> {
-  placeCard.remove();
-});
-
+  cardElement.remove();
+}); 
+cardContainer.prepend(cardElement);
+return cardElement
 //cards go in cards container
-cardContainer.prepend(placeCard);
 };
 
+
 //use initial cards
-initialCards.forEach(generateCard);
+initialCards.forEach(createCardElement);
