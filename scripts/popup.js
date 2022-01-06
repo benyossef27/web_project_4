@@ -1,7 +1,7 @@
 //popup open & close realted
-const popup = document.querySelector(".popup_type_profile");
-const popupButton = document.querySelector(".profile__popup-button");
-const popupClose = document.querySelector(".popup__close_type_profile");
+const popupProfileForm = document.querySelector(".popup_type_profile");
+const popupProfileButton = document.querySelector(".profile__popup-button");
+const popupProfileClose = document.querySelector(".popup__close_type_profile");
 const addPlace = document.querySelector(".popup_type_place");
 const addPlaceButton = document.querySelector(".profile__add-button");
 const closeAddPlacebutton = document.querySelector(".popup__close_type_place")
@@ -30,81 +30,77 @@ const imageDisplayedHeading = document.querySelector(".popup__heading_type_previ
 
 
 //opening popup window
-function display() {
-    popup.classList.add("popup_open");
-    profileFormNameInput.value = profileName.textContent;
-    profileFormJobInput.value = profileJob.textContent;
-}   
-//listener open button
-popupButton.addEventListener("click", display);
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+};
+//generic popup closing funcrion
+function closePopup(popup){
+  popup.classList.remove("popup_opened")
+};
 
-//closing popup window without submit
-function close() {
-    popup.classList.remove("popup_open");
-}
-//listener close button
-popupClose.addEventListener("click", close);
+                ///profile form function///
+//opening profile form   
+popupProfileButton.addEventListener("click", ()=> openPopup(popupProfileForm),
+profileFormNameInput.value = profileName.textContent,
+profileFormJobInput.value = profileJob.textContent
+);
+
+//closing profile form window without submit
+popupProfileClose.addEventListener("click", () => closePopup(popupProfileForm));
 
 //submitting & closing form
 function submit(event) {
     profileName.textContent = profileFormNameInput.value;
     profileJob.textContent = profileFormJobInput.value;
     event.preventDefault();
-    close();
+    closePopup(popupProfileForm);
 }
 //listner submit button
 profileForm.addEventListener("submit", submit);
 
+               ///card related functions///
+
+//function to open card form
+addPlaceButton.addEventListener("click", () => openPopup(addPlace));
+
+//function to close card form
+closeAddPlacebutton.addEventListener("click", () => closePopup(addPlace));
+
 const initialCards = [
-    {
-      name: "Yosemite Valley",
-      link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-    },
-    {
-      name: "Lake Louise",
-      link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-    },
-    {
-      name: "Bald Mountains",
-      link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-    },
-    {
-      name: "Latemar",
-      link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-    },
-    {
-      name: "Vanoise National Park",
-      link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-    },
-    {
-      name: "Lago di Braies",
-      link: "https://code.s3.yandex.net/web-code/lago.jpg"
-    }
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  }
 ];
 
 //form submit
 cardForm.addEventListener("submit", (evt) => {
-    evt.preventDefault()
-    cardContainer.prepend(createCardElement({name: cardTitleInput.value, link:cardImageInput.value}))
-    cardForm.reset()
-    closeAddPlace()
+  evt.preventDefault()
+  cardContainer.prepend(createCardElement({name: cardTitleInput.value, link:cardImageInput.value}))
+  cardForm.reset()
+  closePopup(addPlace)
 
 })
-
-//function to open cardform
-function displayAddPlace() {
-    addPlace.classList.add("popup_open");}
-//listner for function
-addPlaceButton.addEventListener("click", displayAddPlace);
-
-//function to close card form
-function closeAddPlace() {
-    addPlace.classList.remove("popup_open")
-    }
-
-//listner for function
-closeAddPlacebutton.addEventListener("click", closeAddPlace);
-
 //generating cards from form
 function createCardElement(card){
   
@@ -116,22 +112,19 @@ const cardImage = cardElement.querySelector(".card__image");
 const cardDelete = cardElement.querySelector(".card__delete-button");
 const cardLike = cardElement.querySelector(".card__like-button");
 
-cardTitle.textContent = card.name;
-cardImage.src = card.link;
+cardTitle.textContent = card.name
+cardImage.src = card.link
 cardImage.alt = "sorry, coulden't load picture"
 
 //open preview picture
-cardImage.addEventListener("click", () => {
- imagePreview.classList.add("popup_open")
- imageDisplayed.src = card.link;
- imageDisplayed.alt = "sorry, coulden't load picture"
- imageDisplayedHeading.textContent = card.name;
+cardImage.addEventListener("click", function () {
+  imageDisplayed.src = card.link;
+  imageDisplayed.textContent = card.title;
+  openPopup(imagePreview);
 });
 
 //close preview picture
-previewClose.addEventListener("click", ()=>{
-  imagePreview.classList.remove("popup_open");
-})
+previewClose.addEventListener("click", ()=> closePopup(imagePreview));
 
  //like and unlike cards
 cardLike.addEventListener("click", ()=> {
@@ -143,7 +136,6 @@ cardDelete.addEventListener("click", ()=> {
   cardElement.remove();
 });
 return cardElement
-//cards go in cards container
 };
 
 //send cards to container
