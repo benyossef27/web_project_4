@@ -114,13 +114,13 @@ const cardLike = cardElement.querySelector(".card__like-button");
 
 cardTitle.textContent = card.name
 cardImage.src = card.link
-cardImage.alt = "sorry, coulden't load picture"
+cardImage.alt = card.name
 
 //open preview picture
 cardImage.addEventListener("click", function () {
   imageDisplayed.src = card.link;
-  imageDisplayed.alt = "sorry, coulden't load picture"
-  imageDisplayed.textContent = card.title;
+  imageDisplayed.alt = card.name;
+  imageDisplayedHeading.textContent = card.name
   openPopup(imagePreview);
 });
 
