@@ -4,12 +4,12 @@ const popupProfileButton = document.querySelector(".profile__popup-button");
 const popupProfileClose = document.querySelector(".popup__close_type_profile");
 const addPlace = document.querySelector(".popup_type_place");
 const addPlaceButton = document.querySelector(".profile__add-button");
-const closeAddPlacebutton = document.querySelector(".popup__close_type_place")
+const closeAddPlaceButton = document.querySelector(".popup__close_type_place")
 
 //text content submition related
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
-const submitbutton = document.querySelector(".popup__save");
+const submitButton = document.querySelector(".popup__save");
 
 //forms 
 const profileForm = document.forms.profile;
@@ -40,23 +40,23 @@ function closePopup(popup){
 
                 ///profile form function///
 //opening profile form   
-popupProfileButton.addEventListener("click", ()=> openPopup(popupProfileForm),
-profileFormNameInput.value = profileName.textContent,
-profileFormJobInput.value = profileJob.textContent
-);
+popupProfileButton.addEventListener("click", ()=>{ openPopup(popupProfileForm);
+profileFormNameInput.value = profileName.textContent;
+profileFormJobInput.value = profileJob.textContent;
+});
 
 //closing profile form window without submit
 popupProfileClose.addEventListener("click", () => closePopup(popupProfileForm));
 
-//submitting & closing form
-function submit(event) {
+//submitting & closing profile form 
+function submitProfileFrom(event) {
     profileName.textContent = profileFormNameInput.value;
     profileJob.textContent = profileFormJobInput.value;
     event.preventDefault();
     closePopup(popupProfileForm);
 }
 //listner submit button
-profileForm.addEventListener("submit", submit);
+profileForm.addEventListener("submit", submitProfileFrom);
 
                ///card related functions///
 
@@ -64,7 +64,7 @@ profileForm.addEventListener("submit", submit);
 addPlaceButton.addEventListener("click", () => openPopup(addPlace));
 
 //function to close card form
-closeAddPlacebutton.addEventListener("click", () => closePopup(addPlace));
+closeAddPlaceButton.addEventListener("click", () => closePopup(addPlace));
 
 const initialCards = [
   {
@@ -119,6 +119,7 @@ cardImage.alt = "sorry, coulden't load picture"
 //open preview picture
 cardImage.addEventListener("click", function () {
   imageDisplayed.src = card.link;
+  imageDisplayed.alt = "sorry, coulden't load picture"
   imageDisplayed.textContent = card.title;
   openPopup(imagePreview);
 });
