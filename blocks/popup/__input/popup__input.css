@@ -1,4 +1,4 @@
-.popup__formfield {
+.popup__input {
   display: block;
   margin: 0 36px;
   width: 358px;
@@ -11,29 +11,29 @@
 }
 
 @media screen and (max-width: 610px) {
-  .popup__formfield {
+  .popup__input {
     width: 238px;
     margin-left: 22px;
     margin-right: 22px;
   }
 }
 
-.popup__formfield:nth-child(1) {
+.popup__input:nth-child(1) {
   margin-top: 54px;
 }
 
 @media screen and (max-width: 610px) {
-  .popup__formfield:nth-child(1) {
+  .popup__input:nth-child(1) {
     margin-top: 76px;
   }
 }
 
-.popup__formfield:nth-child(2) {
+.popup__input:nth-child(2) {
   margin-top: 43px;
 }
 
 @media screen and (max-width: 610px) {
-  .popup__formfield:nth-child(2) {
+  .popup__input:nth-child(2) {
     margin-top: 30px;
   }
 }

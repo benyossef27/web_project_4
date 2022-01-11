@@ -15,9 +15,9 @@ const submitButton = document.querySelector(".popup__save");
 const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormJobInput = profileForm.elements.job;
-const cardTitleInput = addPlace.querySelector(".popup__formfield_field_heading")
-const cardImageInput = addPlace.querySelector(".popup__formfield_field_img")
-const cardForm = addPlace.querySelector(".popup__input_type_place")
+const cardTitleInput = addPlace.querySelector(".popup__input_field_heading")
+const cardImageInput = addPlace.querySelector(".popup__input_field_img")
+const cardForm = addPlace.querySelector(".popup__form_type_place")
 
 
 //cards
