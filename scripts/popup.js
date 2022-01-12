@@ -42,7 +42,7 @@ function popupClsoeOnEsc(event) {
   const popup = document.querySelector('.popup_opened');
   if (event.key === "Escape"){closePopup(popup)}
 };
-document.addEventListener("keydown", popupClsoeOnEsc)
+document.addEventListener("click", popupClsoeOnEsc)
 //close popup when clicking outside
 function popupCloseOnOutClick (event) {
   closePopup(event.target);  
