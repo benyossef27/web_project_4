@@ -28,12 +28,12 @@
   }
 }
 
-.popup__input:nth-child(2) {
-  margin-top: 43px;
+.popup__input:nth-child(3) {
+  margin-top: 28px;
 }
 
 @media screen and (max-width: 610px) {
-  .popup__input:nth-child(2) {
-    margin-top: 30px;
+  .popup__input:nth-child(3) {
+    margin-top: 15px;
   }
 }

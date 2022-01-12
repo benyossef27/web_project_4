@@ -19,7 +19,10 @@
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__heading/_type_preview/popup__heading_type_preview.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input_type_error/popup__input_type_eror.css);
+@import url(../blocks/popup/___error_visible/popup__error_visible.css);
 @import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__button_disabled/popup__button_disabled.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/cards/cards.css);

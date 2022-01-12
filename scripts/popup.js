@@ -37,6 +37,18 @@ function openPopup(popup) {
 function closePopup(popup){
   popup.classList.remove("popup_opened")
 };
+//clsoe pupup on Esc
+function popupClsoeOnEsc(event) {
+  const popup = document.querySelector('.popup_opened');
+  if (event.key === "Escape"){closePopup(popup)}
+};
+document.addEventListener("keydown", popupClsoeOnEsc)
+//close popup when clicking outside
+function popupCloseOnOutClick (event) {
+  closePopup(event.target);  
+};
+document.addEventListener("click", popupCloseOnOutClick)
+
 
                 ///profile form function///
 //opening profile form   
