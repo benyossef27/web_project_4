@@ -11,11 +11,15 @@
 
 This is a web project showcasing the profile of a traveller around the US and a gallery of places visited.
 
+popup windows using javascript.
 Users may change the details of the profile user to thier own. 
+Users may also add card of places they visited, allowing others to like them.
+form include validation of form input.
+
 
 ## coming up next 
 
-Users will be able to add a name and image of places they visited to the web page allowing others to like them.
+
 
 ## Technology stack, techniques and tools used
 
