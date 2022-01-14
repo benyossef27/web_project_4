@@ -2,26 +2,27 @@
 const popupProfileForm = document.querySelector(".popup_type_profile");
 const popupProfileButton = document.querySelector(".profile__popup-button");
 const popupProfileClose = document.querySelector(".popup__close_type_profile");
-const addPlace = document.querySelector(".popup_type_place");
+const addPlacePopup = document.querySelector(".popup_type_place");
 const addPlaceButton = document.querySelector(".profile__add-button");
 const closeAddPlaceButton = document.querySelector(".popup__close_type_place");
 
 //text content submition related
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
-const submitButton = document.querySelector(".popup__save");
+const submitButton = document.querySelector(".popup__button");
 
 //forms
 const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormJobInput = profileForm.elements.job;
-const cardTitleInput = addPlace.querySelector(".popup__input_field_heading");
-const cardImageInput = addPlace.querySelector(".popup__input_field_img");
-const cardForm = addPlace.querySelector(".popup__form_type_place");
+const cardTitleInput = addPlacePopup.querySelector(".popup__input_field_heading");
+const cardImageInput = addPlacePopup.querySelector(".popup__input_field_img");
+const cardForm = addPlacePopup.querySelector(".popup__form_type_place");
 
 //cards
+const cardTemplate = document.querySelector(".card-template").content.querySelector(".card");
 const cardContainer = document.querySelector(".cards");
-const createCard = document.querySelector(".popup__save_type_place");
+const createCard = document.querySelector(".popup__button_type_place");
 const imagePreview = document.querySelector(".popup_type_preview");
 const previewClose = document.querySelector(".popup__close_type_preview");
 const imageDisplayed = document.querySelector(".popup__image");
@@ -32,25 +33,31 @@ const imageDisplayedHeading = document.querySelector(
 //opening popup window
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  popup.addEventListener("click", popupCloseOnOutClick);
+  document.addEventListener("keydown", popupCloseOnEsc);
+  createCard.classList.add("popup__button_disabled")
 }
+
 //generic popup closing funcrion
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  popup.removeEventListener("click", popupCloseOnOutClick);
+  popup.removeEventListener("keydown", popupCloseOnEsc);
 }
+
 //clsoe pupup on Esc
-function popupClsoeOnEsc(event) {
+function popupCloseOnEsc(event) {
   const popup = document.querySelector(".popup_opened");
-  if (event.key === "Escape") {
+  if (event.key === "Escape"){
     closePopup(popup);
-  }
-}
-document.addEventListener("keydown", popupClsoeOnEsc);
+}}
+
 
 //close popup when clicking outside
 function popupCloseOnOutClick(event) {
   closePopup(event.target);
 }
-document.addEventListener("click", popupCloseOnOutClick);
+
 
 ///profile form function///
 //opening profile form
@@ -65,9 +72,9 @@ popupProfileClose.addEventListener("click", () => closePopup(popupProfileForm));
 
 //submitting & closing profile form
 function submitProfileFrom(event) {
+  event.preventDefault();
   profileName.textContent = profileFormNameInput.value;
   profileJob.textContent = profileFormJobInput.value;
-  event.preventDefault();
   closePopup(popupProfileForm);
 }
 //listner submit button
@@ -76,10 +83,10 @@ profileForm.addEventListener("submit", submitProfileFrom);
 ///card related functions///
 
 //function to open card form
-addPlaceButton.addEventListener("click", () => openPopup(addPlace));
+addPlaceButton.addEventListener("click", () => openPopup(addPlacePopup));
 
 //function to close card form
-closeAddPlaceButton.addEventListener("click", () => closePopup(addPlace));
+closeAddPlaceButton.addEventListener("click", () => closePopup(addPlacePopup));
 
 const initialCards = [
   {
@@ -118,13 +125,10 @@ cardForm.addEventListener("submit", (evt) => {
     })
   );
   cardForm.reset();
-  closePopup(addPlace);
+  closePopup(addPlacePopup);
 });
 //generating cards from form
 function createCardElement(card) {
-  const cardTemplate = document
-    .querySelector(".card-template")
-    .content.querySelector(".card");
   const cardElement = cardTemplate.cloneNode(true);
 
   const cardTitle = cardElement.querySelector(".card__name");
@@ -160,8 +164,8 @@ function createCardElement(card) {
 }
 
 //send cards to container
-function randerCard(card, warpper) {
-  warpper.append(createCardElement(card));
+function randerCard(card, cardContainer) {
+  cardContainer.append(createCardElement(card));
 }
 //use initial cards
 initialCards.forEach((card) => randerCard(card, cardContainer));
