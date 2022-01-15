@@ -33,20 +33,20 @@ const imageDisplayedHeading = document.querySelector(
 //opening popup window
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  popup.addEventListener("click", popupCloseOnOutClick);
-  document.addEventListener("keydown", popupCloseOnEsc);
+  popup.addEventListener("click", handleOverlayClick);
+  document.addEventListener("keydown", handlePopupCloseOnEsc);
   createCard.classList.add("popup__button_disabled")
 }
 
 //generic popup closing funcrion
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  popup.removeEventListener("click", popupCloseOnOutClick);
-  popup.removeEventListener("keydown", popupCloseOnEsc);
+  popup.removeEventListener("click", handleOverlayClick);
+  popup.removeEventListener("keydown", handlePopupCloseOnEsc);
 }
 
 //clsoe pupup on Esc
-function popupCloseOnEsc(event) {
+function handlePopupCloseOnEsc(event) {
   const popup = document.querySelector(".popup_opened");
   if (event.key === "Escape"){
     closePopup(popup);
@@ -54,7 +54,7 @@ function popupCloseOnEsc(event) {
 
 
 //close popup when clicking outside
-function popupCloseOnOutClick(event) {
+function handleOverlayClick(event) {
   closePopup(event.target);
 }
 
