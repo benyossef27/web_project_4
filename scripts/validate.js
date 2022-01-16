@@ -39,10 +39,10 @@ const hasValidInputs = (inputList) => {
 const toggleButton = (inputList, button, { inactiveButtonClass }) => {
   if (hasValidInputs(inputList)) {
     button.classList.add(inactiveButtonClass);
-    button.disable = true;
+    button.disabled = true;
   } else {
     button.classList.remove(inactiveButtonClass);
-    button.disable = false;
+    button.disabled = false;
   }
 };
 

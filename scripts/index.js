@@ -35,7 +35,7 @@ function openPopup(popup) {
   popup.classList.add("popup_opened");
   popup.addEventListener("click", handleOverlayClick);
   document.addEventListener("keydown", handlePopupCloseOnEsc);
-  createCard.classList.add("popup__button_disabled")
+  
 }
 
 //generic popup closing funcrion
