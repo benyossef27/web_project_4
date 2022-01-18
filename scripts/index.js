@@ -83,7 +83,7 @@ profileForm.addEventListener("submit", submitProfileFrom);
 ///card related functions///
 
 //function to open card form
-addPlaceButton.addEventListener("click", () => openPopup(addPlacePopup));
+addPlaceButton.addEventListener("click", () =>{ openPopup(addPlacePopup), createCard.classList.add("popup__button_disabled") });
 
 //function to close card form
 closeAddPlaceButton.addEventListener("click", () => closePopup(addPlacePopup));
