@@ -1,6 +1,6 @@
-class FormValidator {
+export default class FormValidator {
   constructor(settings, formElement) {
-    this._formSelector = settings._formSelector;
+    this._formSelector = settings.formSelector;
     this._inputSelector = settings.InputSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
@@ -10,16 +10,16 @@ class FormValidator {
     this._form = formElement;
   }
 
-  _showInputError(errorUnderLine) {
-    const errorSpan = this._form.querySelector("#" + input.id + "-error");
-    errorUnderLine.classList.add(this._inputErrorClass);
+  _showInputError(inputElement) {
+    const errorSpan = this._form.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.add(this._inputErrorClass);
     errorSpan.classList.add(this._errorClass);
     errorSpan.textContent = erorMessage.validationMessage;
   }
 
-  _hideInputError(errorUnderLine) {
-    const errorSpan = this._form.querySelector("#" + input.id + "-error");
-    errorUnderLine.classList.remove(this._inputErrorClass);
+  _hideInputError(inputElement) {
+    const errorSpan = this._form.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove(this._inputErrorClass);
     errorSpan.classList.remove(this._errorClass);
     errorSpan.textContent = "";
   }
@@ -28,8 +28,8 @@ class FormValidator {
     this._inputList.some((input) => !input.validity.valid);
 
   _checkInputValidity(input) {
-    if (input.validity.valid) this._hideInputError(errorUnderLine);
-    else this._showInputError(errorUnderLine, errorSpan);
+    if (input.validity.valid) this._hideInputError(inputElement);
+    else this._showInputError(inputElement, errorSpan);
   }
 
   _toggleButton() {
@@ -48,8 +48,8 @@ class FormValidator {
     );
     this._buttonElement = this._form.querySelector(this._submitButtonSelector);
     this._inputList.forEach((input) => {
-      input.addEventListener("input", (evt) => {
-        this._checkInputValidity(errorUnderLine);
+      input.addEventListener("input", () => {
+        this._checkInputValidity(inputElement);
         this._toggleButton();
       });
     });
@@ -71,5 +71,3 @@ class FormValidator {
     this._setEventListeners();
   }
 }
-
-export default FormValidator;

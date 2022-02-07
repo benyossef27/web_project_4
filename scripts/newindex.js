@@ -1,5 +1,5 @@
-import Card from "./card.js";
 import FormValidator from "./formValidator.js";
+import Card from "./card.js";
 import { openPopup, closePopup } from "./utils.js";
 
 //popup open & close realted
@@ -29,10 +29,10 @@ const cardForm = document.querySelector(".popup__form_type_place");
 const cardContainer = document.querySelector(".cards");
 const imagePreview = document.querySelector(".popup_type_preview");
 const previewClose = document.querySelector(".popup__close_type_preview");
-// const imageDisplayed = document.querySelector(".popup__image");
-// const imageDisplayedHeading = document.querySelector(
-//   ".popup__heading_type_preview"
-// );
+const imageDisplayed = document.querySelector(".popup__image");
+const imageDisplayedHeading = document.querySelector(
+  ".popup__heading_type_preview"
+);
 
 const initialCards = [
   {
@@ -132,4 +132,4 @@ function submitProfileFrom(event) {
 //listner submit button
 profileForm.addEventListener("submit", submitProfileFrom);
 
-export { settings };
+export { settings, randerCard };
