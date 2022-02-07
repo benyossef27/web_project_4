@@ -1,3 +1,4 @@
+import FormValidator from "./formValidator.js";
 //popup open & close realted
 const popupProfileForm = document.querySelector(".popup_type_profile");
 const popupProfileButton = document.querySelector(".profile__popup-button");
@@ -15,12 +16,16 @@ const submitButton = document.querySelector(".popup__button");
 const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormJobInput = profileForm.elements.job;
-const cardTitleInput = addPlacePopup.querySelector(".popup__input_field_heading");
+const cardTitleInput = addPlacePopup.querySelector(
+  ".popup__input_field_heading"
+);
 const cardImageInput = addPlacePopup.querySelector(".popup__input_field_img");
 const cardForm = addPlacePopup.querySelector(".popup__form_type_place");
 
 //cards
-const cardTemplate = document.querySelector(".card-template").content.querySelector(".card");
+const cardTemplate = document
+  .querySelector(".card-template")
+  .content.querySelector(".card");
 const cardContainer = document.querySelector(".cards");
 const createCard = document.querySelector(".popup__button_type_place");
 const imagePreview = document.querySelector(".popup_type_preview");
@@ -35,7 +40,6 @@ function openPopup(popup) {
   popup.classList.add("popup_opened");
   popup.addEventListener("click", handleOverlayClick);
   document.addEventListener("keydown", handlePopupCloseOnEsc);
-  
 }
 
 //generic popup closing funcrion
@@ -48,16 +52,15 @@ function closePopup(popup) {
 //clsoe pupup on Esc
 function handlePopupCloseOnEsc(event) {
   const popup = document.querySelector(".popup_opened");
-  if (event.key === "Escape"){
+  if (event.key === "Escape") {
     closePopup(popup);
-}}
-
+  }
+}
 
 //close popup when clicking outside
 function handleOverlayClick(event) {
   closePopup(event.target);
 }
-
 
 ///profile form function///
 //opening profile form
@@ -83,10 +86,25 @@ profileForm.addEventListener("submit", submitProfileFrom);
 ///card related functions///
 
 //function to open card form
-addPlaceButton.addEventListener("click", () =>{ openPopup(addPlacePopup), createCard.classList.add("popup__button_disabled") });
+addPlaceButton.addEventListener("click", () => {
+  openPopup(addPlacePopup), createCard.classList.add("popup__button_disabled");
+});
 
 //function to close card form
 closeAddPlaceButton.addEventListener("click", () => closePopup(addPlacePopup));
+
+//form submit
+cardForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  cardContainer.prepend(
+    createCardElement({
+      name: cardTitleInput.value,
+      link: cardImageInput.value,
+    })
+  );
+  cardForm.reset();
+  closePopup(addPlacePopup);
+});
 
 const initialCards = [
   {
@@ -115,18 +133,6 @@ const initialCards = [
   },
 ];
 
-//form submit
-cardForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  cardContainer.prepend(
-    createCardElement({
-      name: cardTitleInput.value,
-      link: cardImageInput.value,
-    })
-  );
-  cardForm.reset();
-  closePopup(addPlacePopup);
-});
 //generating cards from form
 function createCardElement(card) {
   const cardElement = cardTemplate.cloneNode(true);
