@@ -67,7 +67,9 @@ constant.popupProfileButton.addEventListener("click", () => {
 constant.popupProfileClose.addEventListener("click", () =>
   closePopup(constant.popupProfileForm)
 );
-constant.previewClose.addEventListener("click", () => closePopup(imagePreview));
+constant.previewClose.addEventListener("click", () =>
+  closePopup(constant.imagePreview)
+);
 
 //submitting & closing profile form
 function submitProfileFrom(event) {
