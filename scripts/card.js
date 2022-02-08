@@ -1,6 +1,6 @@
 export default class Card {
   constructor(card, cardSelector, openPopup) {
-    this._name = card.mame;
+    this._name = card.name;
     this._link = card.link;
     this._openPopup = openPopup;
     this._cardSelector = cardSelector;
@@ -50,7 +50,7 @@ export default class Card {
 
     imageDisplayed.src = this._link;
     imageDisplayed.alt = this._name;
-    imageDisplayedHeading.textContent = this._name.textContent;
+    imageDisplayedHeading.textContent = this._name;
   };
   generateCard() {
     this._element = this._getTemplate();

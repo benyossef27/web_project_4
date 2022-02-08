@@ -103,6 +103,7 @@ cardForm.addEventListener("submit", (evt) => {
   const card = new Card(newCard, "#card-template", openPopup);
   randerCard(card.generateCard());
   cardForm.reset();
+  cardFormValidator.resetValidation();
   closePopup(addPlacePopup);
 });
 
