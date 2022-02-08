@@ -9,20 +9,22 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   popup.removeEventListener("click", handleOverlayClick);
-  popup.removeEventListener("keydown", handlePopupCloseOnEsc);
+  document.removeEventListener("keydown", handlePopupCloseOnEsc);
 }
 
 //clsoe pupup on Esc
 function handlePopupCloseOnEsc(event) {
-  const popup = document.querySelector(".popup_opened");
   if (event.key === "Escape") {
+    const popup = document.querySelector(".popup_opened");
     closePopup(popup);
   }
 }
 
 //close popup when clicking outside
 function handleOverlayClick(event) {
-  closePopup(event.target);
+  if (event.target === event.currentTarget) {
+    closePopup(event.target);
+  }
 }
 
 export { openPopup };

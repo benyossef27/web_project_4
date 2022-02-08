@@ -60,12 +60,8 @@ export default class FormValidator {
   }
 
   resetValidation() {
-    this._inputList = Array.from(
-      this._form.querySelectorAll(this._inputSelector)
-    );
     this._inputList.forEach((inputElement) => {
       inputElement.value = "";
-      this._showInputError(inputElement);
       this._toggleButton();
     });
   }
