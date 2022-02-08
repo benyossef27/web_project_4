@@ -39,7 +39,7 @@ export const imageDisplayed = document.querySelector(".popup__image");
 export const imageDisplayedHeading = document.querySelector(
   ".popup__heading_type_preview"
 );
-
+export const popups = document.querySelectorAll(".popup");
 export const initialCards = [
   {
     name: "Yosemite Valley",

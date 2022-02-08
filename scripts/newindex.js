@@ -28,11 +28,6 @@ constant.addPlaceButton.addEventListener("click", () => {
   cardFormValidator.resetValidation();
 });
 
-//function to close card form
-constant.closeAddPlaceButton.addEventListener("click", () =>
-  closePopup(constant.addPlacePopup)
-);
-
 //form submit
 constant.cardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
@@ -63,13 +58,17 @@ constant.popupProfileButton.addEventListener("click", () => {
   constant.profileFormJobInput.value = constant.profileJob.textContent;
 });
 
-//closing profile form window without submit
-constant.popupProfileClose.addEventListener("click", () =>
-  closePopup(constant.popupProfileForm)
-);
-constant.previewClose.addEventListener("click", () =>
-  closePopup(constant.imagePreview)
-);
+//listener to closing all popups
+constant.popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup_opened")) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains("popup__close")) {
+      closePopup(popup);
+    }
+  });
+});
 
 //submitting & closing profile form
 function submitProfileFrom(event) {
