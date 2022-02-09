@@ -6,14 +6,14 @@ import * as constant from "./utils/constants.js";
 ///card related functions///
 //send cards to container
 
-const randerCard = (card) => {
+const renderCard = (card) => {
   constant.cardContainer.prepend(card);
 };
 
 //use initial cards
 constant.initialCards.forEach((initialCard) => {
   const card = new Card(initialCard, "#card-template", openPopup);
-  randerCard(card.generateCard());
+  renderCard(card.generateCard());
 });
 
 const cardFormValidator = new FormValidator(
@@ -37,7 +37,7 @@ constant.cardForm.addEventListener("submit", (evt) => {
   };
 
   const card = new Card(newCard, "#card-template", openPopup);
-  randerCard(card.generateCard());
+  renderCard(card.generateCard());
   constant.cardForm.reset();
   cardFormValidator.resetValidation();
   closePopup(constant.addPlacePopup);
@@ -80,4 +80,4 @@ function submitProfileFrom(event) {
 //listner submit button
 constant.profileForm.addEventListener("submit", submitProfileFrom);
 
-export { randerCard };
+export { renderCard };
