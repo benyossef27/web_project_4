@@ -4,6 +4,12 @@ import { openPopup, closePopup } from "./utils/utils.js";
 import * as constant from "./utils/constants.js";
 
 ///card related functions///
+function createCard(item) {
+  const card = new Card(item, "#card-template");
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
 //send cards to container
 
 const renderCard = (card) => {
@@ -11,9 +17,9 @@ const renderCard = (card) => {
 };
 
 //use initial cards
-constant.initialCards.forEach((initialCard) => {
-  const card = new Card(initialCard, "#card-template", openPopup);
-  renderCard(card.generateCard());
+constant.initialCards.forEach((item) => {
+  const cardElement = createCard(item);
+  renderCard(cardElement);
 });
 
 const cardFormValidator = new FormValidator(
@@ -31,13 +37,12 @@ constant.addPlaceButton.addEventListener("click", () => {
 //form submit
 constant.cardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  const newCard = {
-    name: constant.cardTitleInput.value,
-    link: constant.cardImageInput.value,
+  const cardData = {
+    name: `${constant.cardTitleInput.value}`,
+    link: `${constant.cardImageInput.value}`,
   };
-
-  const card = new Card(newCard, "#card-template", openPopup);
-  renderCard(card.generateCard());
+  const cardElement = createCard(cardData);
+  renderCard(cardElement);
   constant.cardForm.reset();
   cardFormValidator.resetValidation();
   closePopup(constant.addPlacePopup);

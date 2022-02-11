@@ -3,6 +3,7 @@ export const popupProfileForm = document.querySelector(".popup_type_profile");
 export const popupProfileButton = document.querySelector(
   ".profile__popup-button"
 );
+
 export const popupProfileClose = document.querySelector(
   ".popup__close_type_profile"
 );
@@ -30,6 +31,7 @@ export const cardImageInput = addPlacePopup.querySelector(
 export const cardForm = document.querySelector(".popup__form_type_place");
 
 //cards
+export const cardTemplate = document.querySelector("#card-template").content;
 export const cardContainer = document.querySelector(".cards");
 export const imagePreview = document.querySelector(".popup_type_preview");
 export const previewClose = document.querySelector(
