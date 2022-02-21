@@ -26,6 +26,3 @@ function handleOverlayClick(event) {
     closePopup(event.target);
   }
 }
-
-export { openPopup };
-export { closePopup };

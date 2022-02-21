@@ -37,10 +37,8 @@ export const imagePreview = document.querySelector(".popup_type_preview");
 export const previewClose = document.querySelector(
   ".popup__close_type_preview"
 );
-export const imageDisplayed = document.querySelector(".popup__image");
-export const imageDisplayedHeading = document.querySelector(
-  ".popup__heading_type_preview"
-);
+export const cardImage = document.querySelector(".popup__image");
+export const cardHeading = document.querySelector(".popup__heading");
 export const popups = document.querySelectorAll(".popup");
 export const initialCards = [
   {
