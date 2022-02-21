@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width initial-scale=1.0" />
-    <link href="./pages/index.css" rel="stylesheet" />
+    <base href="/" />
     <title>around the U.S.</title>
   </head>
 
@@ -12,7 +12,7 @@
       <header class="header">
         <img
           class="header__logo"
-          src="./images/header/header__title.svg"
+          src="<%= require('./images/header/header__title.svg')%>"
           alt="Around The U.s."
         />
       </header>
@@ -20,7 +20,7 @@
         <section class="profile">
           <img
             class="profile__avatar"
-            src="./images/profile/profile__avatar.svg"
+            src="<%= require('./images/profile/profile__avatar.svg')%>"
             alt="your face"
           />
           <div class="profile__details">
@@ -155,7 +155,5 @@
         </div>
       </template>
     </div>
-
-    <script type="module" src="./pages/index.js" defer></script>
   </body>
 </html>
