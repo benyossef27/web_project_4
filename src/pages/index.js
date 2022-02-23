@@ -1,8 +1,8 @@
-import "./pages/index.css";
-import Card from "./scripts/components/Card.js";
-import FormValidator from "./scripts/components/FormValidator.js";
-import PopupWithForm from "./scripts/components/PopupWithForm.js";
-import PopupWithImage from "./scripts/components/PopupWithImage.js";
+import "./index.css";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import {
   settings,
   initialCards,
@@ -18,10 +18,9 @@ import {
   profileForm,
   addPlacePopup,
   imagePreview,
-} from "./scripts/utils/constants.js";
-import Section from "./scripts/components/Section.js";
-import UserInfo from "./scripts/components/UserInfo.js";
-import { add } from "lodash";
+} from "../utils/constants.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
 
 //////////////////////////////profile//////////////////////////////
 const userInfo = new UserInfo(profileName, profileJob);
@@ -33,7 +32,7 @@ const popupEditProfile = new PopupWithForm(
 popupEditProfile.setEventListeners();
 
 function handleProfileFormSubmit() {
-  userInfo.setUserInfo(popupEditProfile._getInputValues());
+  userInfo.setUserInfo(popupEditProfile.getInputValues());
 }
 
 const popupProfile = new FormValidator(settings, profileForm);
@@ -41,10 +40,11 @@ popupProfile.enableValidation();
 
 popupProfileButton.addEventListener("click", () => {
   popupProfile.resetValidation();
-  popupEditProfile.open();
+
   const userNewInfo = userInfo.getUserInfo();
   profileFormNameInput.value = userNewInfo.name;
   profileFormJobInput.value = userNewInfo.job;
+  popupEditProfile.open();
 });
 
 /////////////////////////////////card///////////////////////////
@@ -55,16 +55,16 @@ const popupAddCardForm = new PopupWithForm(
 );
 popupAddCardForm.setEventListeners();
 
-const initialGallery = new Section(
+const cardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      initialGallery.addItem(createCard({ item }));
+      cardList.addItem(createCard({ item }));
     },
   },
   ".cards"
 );
-initialGallery.renderItems();
+cardList.renderItems();
 
 const popupAddCard = new FormValidator(settings, cardForm);
 popupAddCard.enableValidation();
@@ -84,12 +84,11 @@ function createCard({ item }) {
 }
 
 function handleAddCardFormSubmit() {
-  const Values = popupAddCardForm._getInputValues();
+  const newValues = popupAddCardForm.getInputValues();
   const item = {
-    name: Values.placeheading,
-    link: Values.placeimage,
+    name: newValues.placeHeading,
+    link: newValues.placeImage,
   };
-  console.log(item);
   cardContainer.prepend(createCard({ item }));
   cardForm.reset();
 }
@@ -101,4 +100,3 @@ addPlaceButton.addEventListener("click", () => {
 
 //////////////////////////image/////////////////////////////
 const popupImage = new PopupWithImage(imagePreview);
-popupImage.setEventListeners();
