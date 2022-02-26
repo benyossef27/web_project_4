@@ -34,4 +34,4 @@ form include validation of form input.
 
 ## Project Demo Link
 
-[Around The US project](https://benyossef27.github.io/web_project_4/)
+[Around The US project](https://benyossef27.github.io/web_project_4/src/)
