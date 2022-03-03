@@ -55,6 +55,16 @@ const popupAddCardForm = new PopupWithForm(
 );
 popupAddCardForm.setEventListeners();
 
+function handleAddCardFormSubmit() {
+  const newValues = popupAddCardForm.getInputValues();
+  const item = {
+    name: newValues.placeHeading,
+    link: newValues.placeImage,
+  };
+  cardContainer.prepend(createCard({ item }));
+  cardForm.reset();
+}
+
 const cardList = new Section(
   {
     items: initialCards,
@@ -81,16 +91,6 @@ function createCard({ item }) {
   );
   const cardElement = card.generateCard();
   return cardElement;
-}
-
-function handleAddCardFormSubmit() {
-  const newValues = popupAddCardForm.getInputValues();
-  const item = {
-    name: newValues.placeHeading,
-    link: newValues.placeImage,
-  };
-  cardContainer.prepend(createCard({ item }));
-  cardForm.reset();
 }
 
 addPlaceButton.addEventListener("click", () => {
