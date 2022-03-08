@@ -1,18 +1,19 @@
-.profile__avatar{
-    border-radius: 55%;
-    margin: 0;
-    max-height: 120px;
-    justify-self: center;
+.profile__avatar {
+  border-radius: 55%;
+  margin: 0;
+  max-height: 120px;
+  justify-self: center;
+  z-index: 1;
 }
 
-@media screen and (max-width: 888px){
-    .profile__avatar{
-        margin: auto;
-    }
+@media screen and (max-width: 888px) {
+  .profile__avatar {
+    margin: auto;
+  }
 }
 
-@media screen and (max-width: 675px){
-    .profile__avatar{
-      grid-area: ava;
-    }
+@media screen and (max-width: 675px) {
+  .profile__avatar {
+    grid-area: ava;
+  }
 }

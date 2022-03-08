@@ -17,11 +17,16 @@
       </header>
       <main class="content">
         <section class="profile">
-          <img
-            class="profile__avatar"
-            src="<%= require('./images/profile/profile__avatar.svg')%>"
-            alt="your face"
-          />
+          <div class="profile__avatar-box">
+            <img
+              class="profile__avatar"
+              src="<%= require('./images/profile/profile__avatar.svg')%>"
+              alt="your face"
+            /><img
+              class="profile__avatar-edit"
+              src="<%= require('./images/profile/profile__popup-button.svg')%>"
+            />
+          </div>
           <div class="profile__details">
             <h1 class="profile__name">Jacques Cousteau</h1>
             <p class="profile__job">Explorer</p>
