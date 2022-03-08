@@ -4,6 +4,7 @@
   max-height: 120px;
   justify-self: center;
   z-index: 1;
+  transition: all 0.5s ease-in-out;
 }
 
 @media screen and (max-width: 888px) {
