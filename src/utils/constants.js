@@ -40,6 +40,7 @@ export const previewClose = document.querySelector(
 );
 export const cardImage = document.querySelector(".popup__image");
 export const cardHeading = document.querySelector(".popup__heading");
+export const popupCardDelete = document.querySelector(".popup_type_delete");
 export const initialCards = [
   {
     name: "Yosemite Valley",

@@ -23,9 +23,11 @@ import {
   popupAvatarEdit,
   profileAvatar,
   avatarImageInput,
+  popupCardDelete,
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
+import PopupWithSubmit from "../components/PopupWithSubmit";
 
 //////////////////////////////profile//////////////////////////////
 const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
@@ -118,6 +120,10 @@ addPlaceButton.addEventListener("click", () => {
   popupAddCard.resetValidation();
   popupAddCardForm.open();
 });
+
+////////////////////// card delete ///////////////////
+const cardDeletePopup = new PopupWithSubmit(popupCardDelete);
+cardDeletePopup.SetEventListeners();
 
 //////////////////////////image/////////////////////////////
 const popupImage = new PopupWithImage(imagePreview);
