@@ -28,6 +28,7 @@ import {
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithSubmit from "../components/PopupWithSubmit";
+import { api } from "../components/Api.js";
 
 //////////////////////////////profile//////////////////////////////
 const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
@@ -71,6 +72,9 @@ popupAvatarEdit.addEventListener("click", () => {
 });
 
 /////////////////////////////////card///////////////////////////
+api.getInitialCards().then((res) => {
+  cardList.renderItems(res);
+});
 
 const popupAddCardForm = new PopupWithForm(
   addPlacePopup,
@@ -90,14 +94,12 @@ function handleAddCardFormSubmit() {
 
 const cardList = new Section(
   {
-    items: initialCards,
     renderer: (item) => {
       cardList.addItem(createCard({ item }));
     },
   },
   ".cards"
 );
-cardList.renderItems();
 
 const popupAddCard = new FormValidator(settings, cardForm);
 popupAddCard.enableValidation();
@@ -108,6 +110,9 @@ function createCard({ item }) {
       item,
       handleCardClick: () => {
         popupImage.open({ item });
+      },
+      handelBinClick: () => {
+        cardDeletePopup.open();
       },
     },
     ".card-template"
