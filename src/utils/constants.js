@@ -4,9 +4,13 @@ export const popupProfileButton = document.querySelector(
   ".profile__popup-button"
 );
 
+export const popupAvatar = document.querySelector(".popup_type_avatar");
+export const formAvatar = document.querySelector(".popup__form_type_avatar");
 export const popupProfileClose = document.querySelector(
   ".popup__close_type_profile"
 );
+export const profileAvatar = document.querySelector(".profile__avatar");
+export const popupAvatarEdit = document.querySelector(".profile__avatar-box");
 export const addPlacePopup = document.querySelector(".popup_type_place");
 export const addPlaceButton = document.querySelector(".profile__add-button");
 export const closeAddPlaceButton = document.querySelector(
@@ -29,6 +33,9 @@ export const cardImageInput = addPlacePopup.querySelector(
   ".popup__input_field_img"
 );
 export const cardForm = document.querySelector(".popup__form_type_place");
+export const avatarImageInput = formAvatar.querySelector(
+  ".popup__input_field_img"
+);
 
 //cards
 export const cardTemplate = document.querySelector("#card-template").content;

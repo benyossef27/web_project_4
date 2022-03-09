@@ -18,12 +18,17 @@ import {
   profileForm,
   addPlacePopup,
   imagePreview,
+  popupAvatar,
+  formAvatar,
+  popupAvatarEdit,
+  profileAvatar,
+  avatarImageInput,
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
 //////////////////////////////profile//////////////////////////////
-const userInfo = new UserInfo(profileName, profileJob);
+const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
 
 const popupEditProfile = new PopupWithForm(
   popupProfileForm,
@@ -45,6 +50,22 @@ popupProfileButton.addEventListener("click", () => {
   profileFormNameInput.value = userNewInfo.name;
   profileFormJobInput.value = userNewInfo.job;
   popupEditProfile.open();
+});
+/////////////////////////avatar////////////////////
+const popupUserAvatar = new PopupWithForm(popupAvatar, handleAvatarSubmit);
+popupUserAvatar.setEventListeners();
+
+function handleAvatarSubmit() {
+  userInfo.setUserAvatar(popupUserAvatar.getInputValues());
+}
+const avatarFromValidation = new FormValidator(settings, formAvatar);
+avatarFromValidation.enableValidation();
+
+popupAvatarEdit.addEventListener("click", () => {
+  avatarFromValidation.resetValidation();
+  const newAvatar = userInfo.getUserAvatar();
+  avatarImageInput.src = newAvatar.avatarImage;
+  popupUserAvatar.open();
 });
 
 /////////////////////////////////card///////////////////////////
