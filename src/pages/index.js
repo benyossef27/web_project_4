@@ -47,6 +47,7 @@ popupEditProfile.setEventListeners();
 function handleProfileFormSubmit() {
   api.setUserInfo(popupEditProfile.getInputValues()).then((info) => {
     userInfo.setUserInfo(info);
+    popupEditProfile.saving();
   });
 }
 
@@ -67,8 +68,11 @@ popupUserAvatar.setEventListeners();
 
 function handleAvatarSubmit() {
   const data = popupUserAvatar.getInputValues();
-  api.setUserAvatar(data).then((res) => console.log(res));
-
+  api.setUserAvatar(data.avatarImage).then((res) => {
+    console.log(res);
+    userInfo.setUserAvatar(res.avatar);
+  });
+  popupUserAvatar.saving();
   // userInfo.setUserAvatar(popupUserAvatar.getInputValues());
 }
 const avatarFromValidation = new FormValidator(settings, formAvatar);
@@ -101,6 +105,7 @@ function handleAddCardFormSubmit() {
   api.createCard(item).then((item) => {
     cardList.addItem(createCard({ item }));
   });
+  popupAddCardForm.saving();
   cardForm.reset();
 }
 
@@ -138,9 +143,19 @@ addPlaceButton.addEventListener("click", () => {
   popupAddCardForm.open();
 });
 
-////////////////////// card delete ///////////////////
-const cardDeletePopup = new PopupWithSubmit(popupCardDelete);
-cardDeletePopup.SetEventListeners();
+// function handleLikeCount(data) {
+//   api.likeAdd(data).then((res) => {
+//     const likedUsers = Array.from(res);
+//     console.log(res.likes);
+//   });
+// }
 
+////////////////////// card delete ///////////////////
+const cardDeletePopup = new PopupWithSubmit(
+  popupCardDelete,
+  handelDeleteCardSubmit
+);
+cardDeletePopup.SetEventListeners();
+function handelDeleteCardSubmit() {}
 //////////////////////////image/////////////////////////////
 const popupImage = new PopupWithImage(imagePreview);
