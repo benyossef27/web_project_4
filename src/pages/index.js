@@ -32,6 +32,11 @@ import { api } from "../components/Api.js";
 //////////////////////////////profile//////////////////////////////
 const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
 
+api.getUserInfo().then((info) => {
+  userInfo.setUserInfo(info);
+  userInfo.setUserAvatar(info.avatar);
+});
+
 const popupEditProfile = new PopupWithForm(
   popupProfileForm,
   handleProfileFormSubmit
@@ -39,7 +44,9 @@ const popupEditProfile = new PopupWithForm(
 popupEditProfile.setEventListeners();
 
 function handleProfileFormSubmit() {
-  userInfo.setUserInfo(popupEditProfile.getInputValues());
+  api.setUserInfo(popupEditProfile.getInputValues()).then((info) => {
+    userInfo.setUserInfo(info);
+  });
 }
 
 const popupProfile = new FormValidator(settings, profileForm);
@@ -50,7 +57,7 @@ popupProfileButton.addEventListener("click", () => {
 
   const userNewInfo = userInfo.getUserInfo();
   profileFormNameInput.value = userNewInfo.name;
-  profileFormJobInput.value = userNewInfo.job;
+  profileFormJobInput.value = userNewInfo.about;
   popupEditProfile.open();
 });
 /////////////////////////avatar////////////////////

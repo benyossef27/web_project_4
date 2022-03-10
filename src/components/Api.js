@@ -3,6 +3,26 @@ class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me `, {
+      headers: this._headers,
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch((err) => console.log(err));
+  }
+  setUserInfo({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me `, {
+      headers: this._headers,
+      method: "PATCH",
+
+      body: JSON.stringify({
+        name,
+        about,
+      }),
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch((err) => console.log(err));
+  }
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
@@ -20,13 +40,6 @@ class Api {
       .catch((err) => {
         console.log(err);
       });
-  }
-  getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me `, {
-      headers: this._headers,
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => console.log(err));
   }
 
   deleteCard() {
