@@ -23,6 +23,15 @@ class Api {
       .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
       .catch((err) => console.log(err));
   }
+  setUserAvatar(data) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      headers: this._headers,
+      method: "PATCH",
+      body: JSON.stringify({ avatar: data }),
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch((err) => console.log(err));
+  }
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,

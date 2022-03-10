@@ -65,7 +65,10 @@ const popupUserAvatar = new PopupWithForm(popupAvatar, handleAvatarSubmit);
 popupUserAvatar.setEventListeners();
 
 function handleAvatarSubmit() {
-  userInfo.setUserAvatar(popupUserAvatar.getInputValues());
+  const data = popupUserAvatar.getInputValues();
+  api.setUserAvatar(data).then((res) => console.log(res));
+
+  // userInfo.setUserAvatar(popupUserAvatar.getInputValues());
 }
 const avatarFromValidation = new FormValidator(settings, formAvatar);
 avatarFromValidation.enableValidation();
@@ -73,7 +76,7 @@ avatarFromValidation.enableValidation();
 popupAvatarEdit.addEventListener("click", () => {
   avatarFromValidation.resetValidation();
   const newAvatar = userInfo.getUserAvatar();
-  avatarImageInput.src = newAvatar.avatarImage;
+  avatarImageInput.src = newAvatar.avatar;
   popupUserAvatar.open();
 });
 
@@ -94,7 +97,9 @@ function handleAddCardFormSubmit() {
     name: newValues.placeHeading,
     link: newValues.placeImage,
   };
-  cardContainer.prepend(createCard({ item }));
+  api.createCard(item).then((item) => {
+    cardList.addItem(createCard({ item }));
+  });
   cardForm.reset();
 }
 
