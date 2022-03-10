@@ -17,6 +17,7 @@ export const profileFormNameInput = profileForm.elements.name;
 export const profileFormJobInput = profileForm.elements.about;
 
 //card related
+export const cardLikeCounter = document.querySelector(".card__like-counter");
 export const addPlacePopup = document.querySelector(".popup_type_place");
 export const addPlaceButton = document.querySelector(".profile__add-button");
 export const closeAddPlaceButton = document.querySelector(
