@@ -29,20 +29,28 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithSubmit from "../components/PopupWithSubmit";
 import { api } from "../components/Api.js";
+import { data } from "jquery";
 
 //////////////////////////////profile//////////////////////////////
-const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
-
-api.getUserInfo().then((info) => {
-  userInfo.setUserInfo(info);
-  userInfo.setUserAvatar(info.avatar);
-});
-
 const popupEditProfile = new PopupWithForm(
   popupProfileForm,
   handleProfileFormSubmit
 );
 popupEditProfile.setEventListeners();
+
+const popupProfile = new FormValidator(settings, profileForm);
+popupProfile.enableValidation();
+
+const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
+
+let newInfo = {};
+
+api.getUserInfo().then((info) => {
+  userInfo.setUserInfo(info);
+  userInfo.setUserAvatar(info.avatar);
+  newInfo = info;
+  return newInfo;
+});
 
 function handleProfileFormSubmit() {
   api.setUserInfo(popupEditProfile.getInputValues()).then((info) => {
@@ -50,9 +58,6 @@ function handleProfileFormSubmit() {
     popupEditProfile.saving();
   });
 }
-
-const popupProfile = new FormValidator(settings, profileForm);
-popupProfile.enableValidation();
 
 popupProfileButton.addEventListener("click", () => {
   popupProfile.resetValidation();
@@ -69,7 +74,6 @@ popupUserAvatar.setEventListeners();
 function handleAvatarSubmit() {
   const data = popupUserAvatar.getInputValues();
   api.setUserAvatar(data.avatarImage).then((res) => {
-    console.log(res);
     userInfo.setUserAvatar(res.avatar);
   });
   popupUserAvatar.saving();
@@ -86,9 +90,24 @@ popupAvatarEdit.addEventListener("click", () => {
 });
 
 /////////////////////////////////card///////////////////////////
-api.getInitialCards().then((res) => {
-  cardList.renderItems(res);
-});
+///cards from server//
+const cardList = new Section(
+  {
+    renderer: (item) => {
+      cardList.addItem(createCard({ item }));
+    },
+  },
+  ".cards"
+);
+
+api
+  .getInitialCards()
+  .then((res) => {
+    cardList.renderItems(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const popupAddCardForm = new PopupWithForm(
   addPlacePopup,
@@ -109,15 +128,6 @@ function handleAddCardFormSubmit() {
   cardForm.reset();
 }
 
-const cardList = new Section(
-  {
-    renderer: (item) => {
-      cardList.addItem(createCard({ item }));
-    },
-  },
-  ".cards"
-);
-
 const popupAddCard = new FormValidator(settings, cardForm);
 popupAddCard.enableValidation();
 
@@ -128,34 +138,49 @@ function createCard({ item }) {
       handleCardClick: () => {
         popupImage.open({ item });
       },
-      handelBinClick: () => {
-        cardDeletePopup.open();
-      },
     },
+    handleLikeClick,
+    handleBinClick,
     ".card-template"
   );
-  const cardElement = card.generateCard();
+  const cardElement = card.generateCard(newInfo);
   return cardElement;
 }
-
+function handleBinClick(id) {
+  cardDeletePopup.openWithCardInfo(id);
+}
 addPlaceButton.addEventListener("click", () => {
   popupAddCard.resetValidation();
   popupAddCardForm.open();
 });
 
-// function handleLikeCount(data) {
-//   api.likeAdd(data).then((res) => {
-//     const likedUsers = Array.from(res);
-//     console.log(res.likes);
-//   });
-// }
+function handleLikeClick(data) {
+  api
+    .unLikeCard(data)
+    .then((res) => {
+      data._likeCounter.textContent = res.likes.length;
+      data._likeButton.classList.remove("card__like-button_black");
+    })
+    .catch(
+      api.likeCard(data).then((res) => {
+        data._likeCounter.textContent = res.likes.length;
+        data._likeButton.classList.add("card__like-button_black");
+      })
+    );
+}
 
 ////////////////////// card delete ///////////////////
 const cardDeletePopup = new PopupWithSubmit(
   popupCardDelete,
-  handelDeleteCardSubmit
+  handleDeleteCardSubmit
 );
+
 cardDeletePopup.SetEventListeners();
-function handelDeleteCardSubmit() {}
+
+function handleDeleteCardSubmit(data) {
+  api.deleteCard(data).then((res) => {
+    Card.deleteCard();
+  });
+}
 //////////////////////////image/////////////////////////////
 const popupImage = new PopupWithImage(imagePreview);

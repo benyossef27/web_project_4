@@ -3,6 +3,7 @@ class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
+  ///////////////////user////////////////////
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me `, {
       headers: this._headers,
@@ -32,6 +33,7 @@ class Api {
       .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
       .catch((err) => console.log(err));
   }
+  ////////////////////////cards//////////////////////////////////
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
@@ -51,8 +53,22 @@ class Api {
       });
   }
 
-  deleteCard() {
-    return fetch(`${this._baseUrl}/cards/_id `, {
+  deleteCard(data) {
+    return fetch(`${this._baseUrl}/cards/${data._id} `, {
+      headers: this._headers,
+      method: "DELETE",
+    });
+  }
+  likeCard(data) {
+    return fetch(`${this._baseUrl}/cards/likes/${data._id} `, {
+      headers: this._headers,
+      method: "PUT",
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch((err) => console.log(err));
+  }
+  unLikeCard(data) {
+    return fetch(`${this._baseUrl}/cards/likes/${data} `, {
       headers: this._headers,
       method: "DELETE",
     })
@@ -61,6 +77,7 @@ class Api {
   }
 }
 
+///////////////////////////Api instance//////////////////////////////////////
 export const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
   headers: {
