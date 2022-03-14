@@ -29,7 +29,6 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithSubmit from "../components/PopupWithSubmit";
 import { api } from "../components/Api.js";
-import { data } from "jquery";
 
 //////////////////////////////profile//////////////////////////////
 const popupEditProfile = new PopupWithForm(
@@ -55,8 +54,8 @@ api.getUserInfo().then((info) => {
 function handleProfileFormSubmit() {
   api.setUserInfo(popupEditProfile.getInputValues()).then((info) => {
     userInfo.setUserInfo(info);
-    popupEditProfile.saving();
   });
+  popupEditProfile.saving();
 }
 
 popupProfileButton.addEventListener("click", () => {
@@ -137,50 +136,58 @@ function createCard({ item }) {
       item,
       handleCardClick: () => {
         popupImage.open({ item });
+        console.log(card);
+      },
+      handleBinClick: () => {
+        cardDeletePopup.open(card);
+        console.log(card);
+      },
+      handleDeleteButton: () => {
+        // api.deleteCard(item).then((item) => {
+        card.deleteCard();
+        // });
+        console.log(card);
+        cardDeletePopup.close();
       },
     },
     handleLikeClick,
-    handleBinClick,
+
     ".card-template"
   );
   const cardElement = card.generateCard(newInfo);
   return cardElement;
 }
-function handleBinClick(id) {
-  cardDeletePopup.openWithCardInfo(id);
-}
+
 addPlaceButton.addEventListener("click", () => {
   popupAddCard.resetValidation();
   popupAddCardForm.open();
 });
 
-function handleLikeClick(data) {
+function handleLikeClick(card) {
   api
-    .unLikeCard(data)
+    .unLikeCard(card)
     .then((res) => {
-      data._likeCounter.textContent = res.likes.length;
-      data._likeButton.classList.remove("card__like-button_black");
+      card._likeCounter.textContent = res.likes.length;
+      card._likeButton.classList.remove("card__like-button_black");
     })
     .catch(
-      api.likeCard(data).then((res) => {
-        data._likeCounter.textContent = res.likes.length;
-        data._likeButton.classList.add("card__like-button_black");
+      api.likeCard(card).then((res) => {
+        card._likeCounter.textContent = res.likes.length;
+        card._likeButton.classList.add("card__like-button_black");
       })
     );
 }
 
 ////////////////////// card delete ///////////////////
 const cardDeletePopup = new PopupWithSubmit(
-  popupCardDelete,
-  handleDeleteCardSubmit
+  popupCardDelete
+  // handleDeleteCardSubmit
 );
 
-cardDeletePopup.SetEventListeners();
-
-function handleDeleteCardSubmit(data) {
-  api.deleteCard(data).then((res) => {
-    Card.deleteCard();
-  });
-}
+// function handleDeleteCardSubmit(data) {
+//   api.deleteCard(data).then((res) => {
+//     Card.deleteCard();
+//   });
+// }
 //////////////////////////image/////////////////////////////
 const popupImage = new PopupWithImage(imagePreview);

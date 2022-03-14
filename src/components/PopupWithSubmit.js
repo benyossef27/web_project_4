@@ -1,24 +1,15 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithSubmit extends Popup {
-  constructor(popupElement, handleDeleteCardSubmit) {
+  constructor(popupElement) {
     super(popupElement);
-    this._handleSubmit = handleDeleteCardSubmit;
   }
-
-  openWithCardInfo(data) {
+  open(data) {
     super.open();
     this._data = data;
   }
 
   close() {
     super.close();
-  }
-  SetEventListeners() {
-    this._popupElement.addEventListener("click", (evt) => {
-      evt.preventDefault();
-      this._handleSubmit(this._data);
-      this.close();
-    });
   }
 }

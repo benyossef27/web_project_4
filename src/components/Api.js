@@ -68,7 +68,7 @@ class Api {
       .catch((err) => console.log(err));
   }
   unLikeCard(data) {
-    return fetch(`${this._baseUrl}/cards/likes/${data} `, {
+    return fetch(`${this._baseUrl}/cards/likes/${data._id} `, {
       headers: this._headers,
       method: "DELETE",
     })

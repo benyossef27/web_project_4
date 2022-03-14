@@ -1,8 +1,8 @@
 export default class Card {
   constructor(
-    { item, handleCardClick },
+    { item, handleCardClick, handleBinClick, handleDeleteButton },
     handellikeClick,
-    handelBinClick,
+
     cardSelector
   ) {
     this._cardSelector = cardSelector;
@@ -12,8 +12,10 @@ export default class Card {
     this._likes = item.likes;
     this._ownerId = item.owner._id;
     this._handleCardClick = handleCardClick;
-    this._hadlebinClick = handelBinClick;
+    this._handlebinClick = handleBinClick;
+    this._handleDeleteButton = handleDeleteButton;
     this._handleLikeClick = handellikeClick;
+    this._id = item._id;
   }
 
   _getTemplate() {
@@ -25,7 +27,6 @@ export default class Card {
     return this._element;
   }
   _crossId(data) {
-    console.log(this._ownerId, data._id);
     if (this._ownerId !== data._id) {
       this._binButton.style.display = "none";
     }
@@ -42,8 +43,9 @@ export default class Card {
       this._likeButton.classList.add("card__like-button_black");
     }
   }
+
   _handleLikeButton = () => {
-    this._handleLikeClick(this);
+    this._handleLikeClick(this._item);
   };
   deleteCard() {
     this._element.remove();
@@ -51,9 +53,13 @@ export default class Card {
   }
   _setEventListeners() {
     this._likeButton.addEventListener("click", this._handleLikeButton);
-    this._deleteButton.addEventListener("click", this._handleDeleteButton);
+    this._deleteButton.addEventListener("click", () =>
+      this._handleDeleteButton(this._item)
+    );
     this._cardImage.addEventListener("click", this._handleCardClick);
-    this._binButton.addEventListener("click", this._hadlebinClick);
+    this._binButton.addEventListener("click", () =>
+      this._handlebinClick(this._item)
+    );
   }
   generateCard(data) {
     this._element = this._getTemplate();

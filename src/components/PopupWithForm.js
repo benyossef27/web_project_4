@@ -9,9 +9,9 @@ export default class PopupWithForm extends Popup {
     this._button = this._form.querySelector(".popup__button");
   }
 
-  saving() {
+  saving = () => {
     this._button.textContent = "saving...";
-  }
+  };
   getInputValues() {
     const data = {};
     this._inputList.forEach((input) => {
