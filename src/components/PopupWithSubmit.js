@@ -3,13 +3,15 @@ import Popup from "./Popup.js";
 export default class PopupWithSubmit extends Popup {
   constructor(popupElement) {
     super(popupElement);
+    this._form = this._popupElement.querySelector(".popup__form_type_delete");
   }
-  open(data) {
-    super.open();
-    this._data = data;
+  setAction(action) {
+    this._handleSubmit = action;
   }
-
-  close() {
-    super.close();
+  setEventListeners() {
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._handleSubmit();
+    });
   }
 }

@@ -53,27 +53,35 @@ class Api {
       });
   }
 
-  deleteCard(data) {
-    return fetch(`${this._baseUrl}/cards/${data._id} `, {
+  deleteCard(id) {
+    return fetch(`${this._baseUrl}/cards/${id} `, {
       headers: this._headers,
       method: "DELETE",
-    });
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch((err) => {
+        console.log(err);
+      });
   }
-  likeCard(data) {
-    return fetch(`${this._baseUrl}/cards/likes/${data._id} `, {
+  likeCard(id) {
+    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       headers: this._headers,
       method: "PUT",
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }
-  unLikeCard(data) {
-    return fetch(`${this._baseUrl}/cards/likes/${data._id} `, {
+  unlikeCard(id) {
+    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       headers: this._headers,
       method: "DELETE",
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 

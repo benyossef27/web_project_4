@@ -15,6 +15,9 @@ export const profileJob = document.querySelector(".profile__job");
 export const profileForm = document.querySelector(".popup__form_type_profile");
 export const profileFormNameInput = profileForm.elements.name;
 export const profileFormJobInput = profileForm.elements.about;
+export const popupUserAvatarForm = document.querySelector(
+  ".popup__form_type_avatar"
+);
 
 //card related
 export const cardLikeCounter = document.querySelector(".card__like-counter");
