@@ -51,7 +51,6 @@ const popupEditProfile = new PopupWithForm(
 popupEditProfile.setEventListeners();
 
 const popupProfile = new FormValidator(settings, profileForm);
-popupProfile.enableValidation();
 
 const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
 
@@ -73,8 +72,6 @@ function handleProfileFormSubmit() {
 }
 
 popupProfileButton.addEventListener("click", () => {
-  popupProfile.resetValidation();
-
   const userNewInfo = userInfo.getUserInfo();
   profileFormNameInput.value = userNewInfo.name;
   profileFormJobInput.value = userNewInfo.about;
@@ -106,11 +103,8 @@ function handleAvatarSubmit() {
     });
 }
 const avatarFromValidation = new FormValidator(settings, formAvatar);
-avatarFromValidation.enableValidation();
 
 popupAvatarEdit.addEventListener("click", () => {
-  avatarFromValidation.resetValidation();
-
   avatarImageInput.src = userInfo.getUserAvatar();
 
   popupUserAvatar.open();
@@ -203,11 +197,7 @@ function handleAddCardFormSubmit() {
     });
 }
 
-const popupAddCard = new FormValidator(settings, cardForm);
-popupAddCard.enableValidation();
-
 addPlaceButton.addEventListener("click", () => {
-  popupAddCard.resetValidation();
   popupAddCardForm.open();
 });
 
@@ -216,3 +206,23 @@ const cardDeletePopup = new PopupWithSubmit(popupCardDelete);
 cardDeletePopup.setEventListeners();
 //////////////////////////image/////////////////////////////
 const popupImage = new PopupWithImage(imagePreview);
+
+const formValidators = {};
+
+// enable validation
+const enableValidation = (settings) => {
+  const formList = Array.from(document.querySelectorAll(settings.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(settings, formElement);
+    // here you get the name of the form
+    const formName = formElement.getAttribute("name");
+    // here you store a validator by the `name` of the form
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(settings);
+formValidators["profileform"].resetValidation();
+formValidators["avatarform"].resetValidation();
+formValidators["placeform"].resetValidation();
