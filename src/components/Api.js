@@ -3,13 +3,13 @@ class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
-
+  /////////////custom fetch////////////////////////////
   _customFetch = (url, headers) => {
     return fetch(url, headers).then((res) =>
       res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
     );
   };
-  ///////////////////user////////////////////
+  ///////////////////user profile////////////////////
   getUserInfo() {
     return this._customFetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
