@@ -65,6 +65,7 @@ function handleProfileFormSubmit() {
     .then((info) => {
       userInfo.setUserInfo(info);
       popupEditProfile.saving();
+      popupEditProfile.close();
     })
     .catch((err) => {
       console.log(`Error: ${err}`);
@@ -95,6 +96,7 @@ function handleAvatarSubmit() {
     .then((res) => {
       userInfo.setUserAvatar(res.avatar);
       popupUserAvatar.saving();
+      popupUserAvatar.close();
     })
     .catch((err) => {
       console.log(`Error: ${err}`);
@@ -149,6 +151,7 @@ function handleAddCardFormSubmit() {
     .createCard(item)
     .then((item) => {
       cardList.addItem(createCard({ item }));
+      popupAddCardForm.close();
     })
     .catch((res) => {
       console.log(`Error: ${err}`);
