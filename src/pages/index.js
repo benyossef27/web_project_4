@@ -72,6 +72,7 @@ function handleProfileFormSubmit() {
 }
 
 popupProfileButton.addEventListener("click", () => {
+  formValidators["profileform"].resetValidation();
   const userNewInfo = userInfo.getUserInfo();
   profileFormNameInput.value = userNewInfo.name;
   profileFormJobInput.value = userNewInfo.about;
@@ -92,7 +93,6 @@ function handleAvatarSubmit() {
     .setUserAvatar(data.avatarImage)
     .then((res) => {
       userInfo.setUserAvatar(res.avatar);
-      popupUserAvatar.saving();
       popupUserAvatar.close();
     })
     .catch((err) => {
@@ -102,10 +102,10 @@ function handleAvatarSubmit() {
       popupUserAvatar.hideSaving();
     });
 }
-const avatarFromValidation = new FormValidator(settings, formAvatar);
 
 popupAvatarEdit.addEventListener("click", () => {
-  avatarImageInput.src = userInfo.getUserAvatar();
+  formValidators["avatarform"].resetValidation();
+  avatarImageInput.textContent = userInfo.getUserAvatar();
 
   popupUserAvatar.open();
 });
@@ -198,6 +198,8 @@ function handleAddCardFormSubmit() {
 }
 
 addPlaceButton.addEventListener("click", () => {
+  formValidators["placeform"].resetValidation();
+
   popupAddCardForm.open();
 });
 
@@ -223,6 +225,3 @@ const enableValidation = (settings) => {
 };
 
 enableValidation(settings);
-formValidators["profileform"].resetValidation();
-formValidators["avatarform"].resetValidation();
-formValidators["placeform"].resetValidation();
