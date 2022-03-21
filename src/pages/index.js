@@ -12,7 +12,6 @@ import {
   profileName,
   profileFormJobInput,
   profileFormNameInput,
-  cardForm,
   profileForm,
   addPlacePopup,
   imagePreview,
@@ -29,6 +28,7 @@ import PopupWithSubmit from "../components/PopupWithSubmit";
 import { api } from "../components/Api.js";
 let newInfo = {};
 let userId;
+
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardData]) => {
     newInfo = userData;

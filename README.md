@@ -12,21 +12,19 @@
 This is a web project showcasing the profile of a traveller around the US and a gallery of places visited.
 
 popup windows using javascript.
-Users may change the details of the profile user to thier own. 
+Users may change the details of the profile user to thier own.
 Users may also add card of places they visited, allowing others to like them.
 form include validation of form input.
 
-
-## coming up next 
-
-
+## coming up next
 
 ## Technology stack, techniques and tools used
 
 - HTML
 - CSS
-- BEM Methodology
 - JavaScript
+- Node.js
+- Json
 
 ## Figma
 
