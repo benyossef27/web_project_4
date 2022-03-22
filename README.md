@@ -9,21 +9,18 @@
 
 ## Project description
 
-This is a web project showcasing the profile of a traveller around the US and a gallery of places visited.
+This is a web project demonstrates the profile of a traveller in the US creating a gallery of the sites they visited.
 
-popup windows using javascript.
-Users may change the details of the profile user to thier own.
-Users may also add card of places they visited, allowing others to like them.
-form include validation of form input.
-
-## coming up next
+All interactive elements are made with Java Script classes.
+User may update profile details and avatar as their own, and create cards with image link and name, like or unlike otehr users cards and delete card they submited.
+All data is submited to API and then retrieved and renderd.
 
 ## Technology stack, techniques and tools used
 
 - HTML
 - CSS
+- BAM methodology
 - JavaScript
-- Node.js
 - Json
 
 ## Figma
