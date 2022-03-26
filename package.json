@@ -175,7 +175,7 @@
     "mimic-fn": "^2.1.0",
     "minimalistic-assert": "^1.0.1",
     "minimatch": "^3.1.2",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "mkdirp": "^0.5.5",
     "ms": "^2.0.0",
     "multicast-dns": "^6.2.3",
